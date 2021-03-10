@@ -12,7 +12,7 @@ $(function(){
         }else{
             path = "buyProduct";
         }
-        var request = BX.ajax.runComponentAction('bitrix:buy.oneclick', path, {
+        var request = BX.ajax.runComponentAction('mycomponent:buy.oneclick', path, {
             mode:'class',
             data: {
                 phone: $(".phone").val(),
