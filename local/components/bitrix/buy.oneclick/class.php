@@ -26,7 +26,6 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
     public function executeComponent()
     {
         $this->includeComponentTemplate();
-//        $this->buyBasketAction();
     }
 
     public function buyProductAction ($phone,  $id_element)
@@ -176,7 +175,5 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
         return [
             'error' => $error,
         ];
-
-
     }
 }
