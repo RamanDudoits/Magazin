@@ -6,7 +6,7 @@ $(function(){
 
     $(".buy-one-click").click(function(){
         var path;
-        if($(".buy-one-click").attr("data-cur-path") === "/personal/cart/")
+        if($(".buy-one-click").attr("data-params-object") === "basket")
         {
             path = "buyBasket";
         }else{

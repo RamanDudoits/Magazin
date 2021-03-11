@@ -19,6 +19,10 @@ $arComponentParameters = array(
             "",
             "URL_TEMPLATES"
         ),
+        "OBJECT_COMPONENT" => array(
+            "NAME" => "Объект вызова компонента",
+            "TYPE" => "STRING",
+        ),
     ),
 );
 ?>
