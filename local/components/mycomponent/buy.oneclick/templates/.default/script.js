@@ -17,9 +17,9 @@ $(function(){
             data: {
                 phone: $(".phone").val(),
                 id_element: $(this).attr("data-id"),
+                id_user: $(this).attr("data-id-user"),
             }
         });
-
         request.then(function (response) {
                 if (response.status === "success" && response.data.error.length === 0)
                 {

@@ -18,7 +18,7 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
         return [
             'buyProduct' => [
                 'prefilters' => [],
-                'postfilters' => [],
+
             ],
         ];
     }
@@ -26,9 +26,10 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
     public function executeComponent()
     {
         $this->includeComponentTemplate();
+        echo Bitrix\Sale\Fuser::getId();
     }
 
-    public function buyProductAction ($phone,  $id_element)
+    public function buyProductAction ($phone,  $id_element, $id_user)
     {
         $products = [
             ['PRODUCT_ID' => $id_element,
@@ -45,22 +46,22 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
             $item->setFields($product);
         }
 
-        $result = $this->createOrder($basket, $phone);
+        $result = $this->createOrder($basket, $phone, $id_user);
         return $result;
     }
 
-    public function buyBasketAction ($phone)
+    public function buyBasketAction ($phone, $id_user)
     {
         $basket = Sale\Basket::loadItemsForFUser(Sale\Fuser::getId(),
             "s1");
 
-        $result = $this->createOrder($basket, $phone);
+        $result = $this->createOrder($basket, $phone, $id_user);
         return $result;
     }
 
-    public function createOrder($basket , $phone)
+
+    public function createOrder($basket , $phone, $id_user)
     {
-        global $USER;
         $error = array();
 
         if ($phone == "")
@@ -79,8 +80,8 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
             ];
         }
 
-        $order = Bitrix\Sale\Order::create(SITE_ID, $USER->GetID());
-        $order->setPersonTypeId($USER->GetID());
+        $order = Bitrix\Sale\Order::create(SITE_ID, $id_user);
+        $order->setPersonTypeId(1);
         $order->setBasket($basket);
 
         $shipmentCollection = $order->getShipmentCollection();
@@ -119,4 +120,5 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
             'error' => $error,
         ];
     }
+
 }
