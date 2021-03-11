@@ -16,7 +16,7 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
     public function configureActions()
     {
         return [
-            'buyOneClick' => [
+            'buyProduct' => [
                 'prefilters' => [],
                 'postfilters' => [],
             ],
