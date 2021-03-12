@@ -20,16 +20,24 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
                 'prefilters' => [],
 
             ],
+            'buyBasket' => [
+                'prefilters' => [],
+
+            ],
         ];
     }
 
     public function executeComponent()
     {
+        if ($this->arParams["OBJECT_COMPONENT"] == "Y")
+        {
+            $objCom = "catalog";
+        } else $objCom = "basket";
+        $this->arParams["ACTION"] = $objCom;
         $this->includeComponentTemplate();
-        echo Bitrix\Sale\Fuser::getId();
     }
 
-    public function buyProductAction ($phone,  $id_element, $id_user)
+    public function buyProductAction ($phone,  $id_element)
     {
         $products = [
             ['PRODUCT_ID' => $id_element,
@@ -46,23 +54,26 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
             $item->setFields($product);
         }
 
-        $result = $this->createOrder($basket, $phone, $id_user);
+        $result = $this->createOrder($basket, $phone);
         return $result;
     }
 
-    public function buyBasketAction ($phone, $id_user)
+    public function buyBasketAction ($phone)
     {
         $basket = Sale\Basket::loadItemsForFUser(Sale\Fuser::getId(),
             "s1");
 
-        $result = $this->createOrder($basket, $phone, $id_user);
+        $result = $this->createOrder($basket, $phone);
         return $result;
     }
 
 
-    public function createOrder($basket , $phone, $id_user)
+    public function createOrder($basket, $phone)
     {
         $error = array();
+        $deliveryId = 3;
+        $paySystem = 1;
+
 
         if ($phone == "")
         {
@@ -80,15 +91,20 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
             ];
         }
 
-        $order = Bitrix\Sale\Order::create(SITE_ID, $id_user);
-        $order->setPersonTypeId(1);
+        $order = Bitrix\Sale\Order::create(SITE_ID, Sale\Fuser::getId());
+
+        $personTypeid = $order->getPersonTypeId();
+        if (!isset($personTypeid))
+            {
+                $personTypeid = 1;
+            } else $personTypeid = 0;
+        $order->setPersonTypeId($personTypeid);
         $order->setBasket($basket);
 
         $shipmentCollection = $order->getShipmentCollection();
         $shipment = $shipmentCollection->createItem(
-            Bitrix\Sale\Delivery\Services\Manager::getObjectById(1)
+            Bitrix\Sale\Delivery\Services\Manager::getObjectById($deliveryId)
         );
-
         $shipmentItemCollection = $shipment->getShipmentItemCollection();
 
         foreach ($basket as $basketItem)
@@ -99,7 +115,7 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
 
         $paymentCollection = $order->getPaymentCollection();
         $payment = $paymentCollection->createItem(
-            Bitrix\Sale\PaySystem\Manager::getObjectById(1)
+            Bitrix\Sale\PaySystem\Manager::getObjectById($paySystem)
         );
 
         $payment->setField("SUM", $order->getPrice());
@@ -115,7 +131,6 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
         {
             $result->getErrors();
         }
-
         return [
             'error' => $error,
         ];
