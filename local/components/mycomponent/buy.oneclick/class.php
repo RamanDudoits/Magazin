@@ -2,7 +2,6 @@
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
 use Bitrix\Sale,
     Bitrix\Sale\Basket;
-
 use Bitrix\Main\Engine\Contract\Controllerable;
 
 Bitrix\Main\Loader::includeModule("sale");
@@ -61,7 +60,7 @@ class CBuyOneClick extends CBitrixComponent implements Controllerable
     public function buyBasketAction ($phone)
     {
         $basket = Sale\Basket::loadItemsForFUser(Sale\Fuser::getId(),
-            "s1");
+            SITE_ID);
 
         $result = $this->createOrder($basket, $phone);
         return $result;
