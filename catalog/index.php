@@ -4,11 +4,11 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog", 
-	"eshop", 
+	"bootstrap_v4", 
 	array(
 		"ACTION_VARIABLE" => "action",
 		"ADD_ELEMENT_CHAIN" => "Y",
-		"ADD_PICT_PROP" => "-",
+		"ADD_PICT_PROP" => "MORE_PHOTO",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"ADD_SECTION_CHAIN" => "Y",
@@ -28,7 +28,7 @@ $APPLICATION->SetTitle("");
 		"COMMON_ADD_TO_BASKET_ACTION" => "ADD",
 		"COMMON_SHOW_CLOSE_POPUP" => "N",
 		"COMPATIBLE_MODE" => "N",
-		"COMPONENT_TEMPLATE" => "eshop",
+		"COMPONENT_TEMPLATE" => "bootstrap_v4",
 		"CONVERT_CURRENCY" => "N",
 		"DETAIL_ADD_DETAIL_TO_SLIDER" => "N",
 		"DETAIL_ADD_TO_BASKET_ACTION" => array(
@@ -188,7 +188,7 @@ $APPLICATION->SetTitle("");
 		"OFFERS_SORT_FIELD2" => "shows",
 		"OFFERS_SORT_ORDER" => "asc",
 		"OFFERS_SORT_ORDER2" => "asc",
-		"OFFER_ADD_PICT_PROP" => "-",
+		"OFFER_ADD_PICT_PROP" => "MORE_PHOTO",
 		"OFFER_TREE_PROPS" => array(
 			0 => "SIZES_SHOES",
 			1 => "SIZES_CLOTHES",

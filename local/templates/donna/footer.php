@@ -83,8 +83,27 @@
               <div class="subscribe">
 <!--                <input type="text" name="subscribe-input" placeholder="Подпишитесь на новости" value="" />-->
 <!--                <input type="submit" name="submit" value="" />-->
-                  <?$APPLICATION->IncludeComponent("bitrix:sender.subscribe", "subscribe", Array(
-	"SET_TITLE" => "N",	// Устанавливать заголовок страницы
+                  <?$APPLICATION->IncludeComponent(
+	"bitrix:sender.subscribe", 
+	"subscribe", 
+	array(
+		"SET_TITLE" => "N",
+		"COMPONENT_TEMPLATE" => "subscribe",
+		"USE_PERSONALIZATION" => "Y",
+		"CONFIRMATION" => "N",
+		"HIDE_MAILINGS" => "Y",
+		"SHOW_HIDDEN" => "N",
+		"USER_CONSENT" => "N",
+		"USER_CONSENT_ID" => "0",
+		"USER_CONSENT_IS_CHECKED" => "Y",
+		"USER_CONSENT_IS_LOADED" => "N",
+		"AJAX_MODE" => "N",
+		"AJAX_OPTION_JUMP" => "N",
+		"AJAX_OPTION_STYLE" => "Y",
+		"AJAX_OPTION_HISTORY" => "N",
+		"AJAX_OPTION_ADDITIONAL" => "",
+		"CACHE_TYPE" => "A",
+		"CACHE_TIME" => "3600"
 	),
 	false
 );?>
