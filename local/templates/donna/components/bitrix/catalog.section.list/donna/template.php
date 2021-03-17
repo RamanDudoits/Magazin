@@ -126,8 +126,10 @@ if (0 < $arResult["SECTIONS_COUNT"])
 			unset($arSection);
 			break;
 		case 'TILE':
+
 			foreach ($arResult['SECTIONS'] as &$arSection)
 			{
+			    if ($arSection["CODE"] == "novinki" || $arSection["CODE"] == "sale") continue;
 				$this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
 				$this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 
@@ -147,7 +149,8 @@ if (0 < $arResult["SECTIONS_COUNT"])
 					);
 				?>
                 <div class="cat-item">
-                <a class="first" href="<? echo $arSection['SECTION_PAGE_URL']; ?>">
+
+                <a class="first"  href="<? echo $arSection['SECTION_PAGE_URL']; ?>">
                 <img src="<? echo $arSection['PICTURE']['SRC']; ?>"alt="">
                 <span class="cat-title"><? echo $arSection['PICTURE']['TITLE']; ?></span>
                 </a>

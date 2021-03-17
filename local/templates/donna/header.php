@@ -25,8 +25,9 @@ Asset::getInstance()->addJs('https://code.jquery.com/jquery-1.11.3.min.js');
 	<![endif]-->
 </head>
 <body>
-<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
 <section id="wrapper">
+<div id="panel"><? $APPLICATION->ShowPanel(); ?></div>
+
 
   <!-- start header -->
   <header id="header">
@@ -162,3 +163,4 @@ Asset::getInstance()->addJs('https://code.jquery.com/jquery-1.11.3.min.js');
 	),
 	false
 );?>
+

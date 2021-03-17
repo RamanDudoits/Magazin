@@ -17,27 +17,7 @@ $buttonId = $this->randString();
 <?
 $frame = $this->createFrame("sender-subscribe", false)->begin();
 ?>
-
-	<form id="bx_subscribe_subform_<?=$buttonId?>" role="form" method="post" action="<?=$arResult["FORM_ACTION"]?>">
-		<?=bitrix_sessid_post()?>
-		<input type="hidden" name="sender_subscription" value="add">
-
-		<div class="bx-input-group">
-			<input class="bx-form-control" type="email" name="SENDER_SUBSCRIBE_EMAIL" value="<?=$arResult["EMAIL"]?>" title="<?=GetMessage("subscr_form_email_title")?>" placeholder="<?=htmlspecialcharsbx(GetMessage('subscr_form_email_title'))?>">
-		</div>
-
-		<div style="<?=($arParams['HIDE_MAILINGS'] <> 'Y' ? '' : 'display: none;')?>">
-			<?if(count($arResult["RUBRICS"])>0):?>
-				<div class="bx-subscribe-desc"><?=GetMessage("subscr_form_title_desc")?></div>
-			<?endif;?>
-			<?foreach($arResult["RUBRICS"] as $itemID => $itemValue):?>
-			<div class="bx_subscribe_checkbox_container">
-				<input type="checkbox" name="SENDER_SUBSCRIBE_RUB_ID[]" id="SENDER_SUBSCRIBE_RUB_ID_<?=$itemValue["ID"]?>" value="<?=$itemValue["ID"]?>"<?if($itemValue["CHECKED"]) echo " checked"?>>
-				<label for="SENDER_SUBSCRIBE_RUB_ID_<?=$itemValue["ID"]?>"><?=htmlspecialcharsbx($itemValue["NAME"])?></label>
-			</div>
-			<?endforeach;?>
-		</div>
-
+            <input type="text" name="subscribe-input" type="email" placeholder="Подпишитесь на новости" value="<?=$arResult["EMAIL"]?>"  title="<?=GetMessage("subscr_form_email_title")?>" placeholder="<?=htmlspecialcharsbx(GetMessage('subscr_form_email_title'))?>"/>
 		<?if ($arParams['USER_CONSENT'] == 'Y'):?>
 		<div class="bx_subscribe_checkbox_container bx-sender-subscribe-agreement">
 			<?$APPLICATION->IncludeComponent(
@@ -58,14 +38,12 @@ $frame = $this->createFrame("sender-subscribe", false)->begin();
 			);?>
 		</div>
 		<?endif;?>
-
-		<div class="bx_subscribe_submit_container">
-			<button class="sender-btn btn-subscribe" id="bx_subscribe_btn_<?=$buttonId?>"><span><?=GetMessage("subscr_form_button")?></span></button>
-		</div>
-	</form>
+            <input type="submit" id="bx_subscribe_btn_<?=$buttonId?>" name="submit" value="" />
 <?
 $frame->beginStub();
 ?>
+<input type="text" name="subscribe-input" placeholder="Подпишитесь на новости" value="" />
+
 	<?if(isset($arResult['MESSAGE'])): CJSCore::Init(array("popup"));?>
 		<div id="sender-subscribe-response-cont" style="display: none;">
 			<div class="bx_subscribe_response_container">
