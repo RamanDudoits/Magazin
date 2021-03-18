@@ -90,10 +90,6 @@ if (0 < $arResult["SECTIONS_COUNT"])
 				?>
                         <?if($arSection["CODE"] == "novinki"):?>
                             <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>" class="image" style="background-image: url(<?echo $arSection['PICTURE']['SRC']; ?>);">
-                                <span class="image-title">
-                                      Платья
-                                          <span>Выберите ваш образ</span>
-                                        </span>
                                     </a>
                                     <?endif;?>
                                 <?if($arSection["CODE"] == "sale"):?>
@@ -106,4 +102,6 @@ if (0 < $arResult["SECTIONS_COUNT"])
 }
 ?>
 
-
+</section>
+<!-- start container --><section id="container">
+    <!-- start categories --> <section class="categories">

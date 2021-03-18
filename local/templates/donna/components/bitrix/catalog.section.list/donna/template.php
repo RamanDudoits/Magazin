@@ -220,3 +220,6 @@ if (0 < $arResult["SECTIONS_COUNT"])
 	echo ('LINE' != $arParams['VIEW_MODE'] ? '<div style="clear: both;"></div>' : '');
 }
 ?></div>
+
+</section>
+<!-- end of categories -->

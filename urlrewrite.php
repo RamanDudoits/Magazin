@@ -56,6 +56,14 @@ $arUrlRewrite=array (
     'PATH' => '/personal/order/index.php',
     'SORT' => 100,
   ),
+  16 => 
+  array (
+    'CONDITION' => '#^/catalog-donna/#',
+    'RULE' => '',
+    'ID' => 'mycomponent:catalog',
+    'PATH' => '/catalog-donna/index.php',
+    'SORT' => 100,
+  ),
   10 => 
   array (
     'CONDITION' => '#^/personal/#',

@@ -12,9 +12,12 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-<div class="title-section">
-   <? echo GetMessage("NEWS")?>
-</div>
+<!-- start news -->
+<section class="news">
+    <div class="inner">
+        <div class="title-section">
+           <? echo GetMessage("NEWS")?>
+        </div>
 
 <div class="news-list">
 <?if($arParams["DISPLAY_TOP_PAGER"]):?>
@@ -52,8 +55,8 @@ $this->setFrameMode(true);
 <div class="button-section">
     <a class="see-all" href="http://bitrix/donna-news"><? echo GetMessage("ALL_NEWS")?></a>
 </div>
-</div>
 
+    </div>
 
-
+</section>
 
