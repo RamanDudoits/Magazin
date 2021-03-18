@@ -12,7 +12,7 @@ foreach($arResult as $arItem):
 	<?if($arItem["TEXT"] == "Оптовикам"):?>
         <li class="opt"><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
 	<?elseif($arItem["SELECTED"]):?>
-		<li><a href="<?=$arItem["LINK"]?>" class="selected"><?=$arItem["TEXT"]?></a></li>
+		<li><a class="list-group-item list-group-item-action<?=($arItem["SELECTED"]) ? " active" : "" ;?>" href="<?=$arItem["LINK"]?>" class="selected"><?=$arItem["TEXT"]?></a></li>
 	<?else:?>
 		<li><a href="<?=$arItem["LINK"]?>"><?=$arItem["TEXT"]?></a></li>
 	<?endif?>

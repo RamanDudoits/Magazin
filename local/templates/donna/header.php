@@ -159,7 +159,8 @@ Asset::getInstance()->addJs('https://code.jquery.com/jquery-1.11.3.min.js');
 		"MENU_CACHE_USE_GROUPS" => "Y",
 		"ROOT_MENU_TYPE" => "top",
 		"USE_EXT" => "N",
-		"COMPONENT_TEMPLATE" => "menu_donna"
+		"COMPONENT_TEMPLATE" => "menu_donna",
+		"MENU_THEME" => "red"
 	),
 	false
 );?>
