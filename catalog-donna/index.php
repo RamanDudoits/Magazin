@@ -2,13 +2,24 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");?>
 
+<?$APPLICATION->IncludeComponent(
+	"bitrix:breadcrumb", 
+	"donna-breadcrumbs", 
+	array(
+		"START_FROM" => "0",
+		"PATH" => "",
+		"SITE_ID" => "s1",
+		"COMPONENT_TEMPLATE" => "donna-breadcrumbs"
+	),
+	false
+);?>
 
 <?$APPLICATION->IncludeComponent(
 	"mycomponent:catalog", 
 	"donna-catalog", 
 	array(
 		"ACTION_VARIABLE" => "action",
-		"ADD_ELEMENT_CHAIN" => "N",
+		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_PICT_PROP" => "-",
 		"ADD_PROPERTIES_TO_BASKET" => "Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -56,7 +67,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"DETAIL_USE_VOTE_RATING" => "N",
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
-		"DISPLAY_TOP_PAGER" => "N",
+		"DISPLAY_TOP_PAGER" => "Y",
 		"ELEMENT_SORT_FIELD" => "shows",
 		"ELEMENT_SORT_FIELD2" => "shows",
 		"ELEMENT_SORT_ORDER" => "asc",
@@ -104,7 +115,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"LIST_SHOW_SLIDER" => "Y",
 		"LIST_SLIDER_INTERVAL" => "3000",
 		"LIST_SLIDER_PROGRESS" => "N",
-		"LOAD_ON_SCROLL" => "N",
+		"LOAD_ON_SCROLL" => "Y",
 		"MESSAGE_404" => "",
 		"MESS_BTN_ADD_TO_BASKET" => "В корзину",
 		"MESS_BTN_BUY" => "Купить",
@@ -116,11 +127,11 @@ $APPLICATION->SetTitle("Каталог");?>
 		"MESS_NOT_AVAILABLE" => "Нет в наличии",
 		"MESS_PRICE_RANGES_TITLE" => "Цены",
 		"MESS_PROPERTIES_TAB" => "Характеристики",
-		"PAGER_BASE_LINK_ENABLE" => "N",
-		"PAGER_DESC_NUMBERING" => "N",
+		"PAGER_BASE_LINK_ENABLE" => "Y",
+		"PAGER_DESC_NUMBERING" => "Y",
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-		"PAGER_SHOW_ALL" => "N",
-		"PAGER_SHOW_ALWAYS" => "N",
+		"PAGER_SHOW_ALL" => "Y",
+		"PAGER_SHOW_ALWAYS" => "Y",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Товары",
 		"PAGE_ELEMENT_COUNT" => "12",
@@ -138,7 +149,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"SEARCH_PAGE_RESULT_COUNT" => "50",
 		"SEARCH_RESTART" => "N",
 		"SEARCH_USE_LANGUAGE_GUESS" => "Y",
-		"SECTIONS_SHOW_PARENT_NAME" => "Y",
+		"SECTIONS_SHOW_PARENT_NAME" => "N",
 		"SECTIONS_VIEW_MODE" => "LINE",
 		"SECTION_ADD_TO_BASKET_ACTION" => "BUY",
 		"SECTION_BACKGROUND_IMAGE" => "-",
@@ -161,7 +172,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"SIDEBAR_SECTION_SHOW" => "N",
 		"TEMPLATE_THEME" => "site",
 		"TOP_ADD_TO_BASKET_ACTION" => "BUY",
-		"TOP_ELEMENT_COUNT" => "12",
+		"TOP_ELEMENT_COUNT" => "15",
 		"TOP_ELEMENT_SORT_FIELD" => "",
 		"TOP_ELEMENT_SORT_FIELD2" => "",
 		"TOP_ELEMENT_SORT_ORDER" => "",
@@ -169,7 +180,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"TOP_ENLARGE_PRODUCT" => "PROP",
 		"TOP_LINE_ELEMENT_COUNT" => "12",
 		"TOP_PRODUCT_BLOCKS_ORDER" => "props,buttons,sku,price,quantityLimit,quantity",
-		"TOP_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
+		"TOP_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
 		"TOP_SHOW_SLIDER" => "N",
 		"TOP_SLIDER_INTERVAL" => "3000",
 		"TOP_SLIDER_PROGRESS" => "Y",
@@ -183,7 +194,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"USE_COMPARE" => "N",
 		"USE_ELEMENT_COUNTER" => "Y",
 		"USE_ENHANCED_ECOMMERCE" => "N",
-		"USE_FILTER" => "Y",
+		"USE_FILTER" => "N",
 		"USE_GIFTS_DETAIL" => "Y",
 		"USE_GIFTS_MAIN_PR_SECTION_LIST" => "Y",
 		"USE_GIFTS_SECTION" => "Y",
@@ -204,8 +215,7 @@ $APPLICATION->SetTitle("Каталог");?>
 			0 => "",
 			1 => "",
 		),
-		"FILTER_PRICE_CODE" => array(
-		),
+		"FILTER_PRICE_CODE" => "",
 		"SEF_FOLDER" => "/catalog-donna/",
 		"PRODUCT_DISPLAY_MODE" => "N",
 		"OFFER_ADD_PICT_PROP" => "-",
@@ -244,6 +254,8 @@ $APPLICATION->SetTitle("Каталог");?>
 		"OFFER_TREE_PROPS" => "",
 		"DETAIL_SHOW_MAX_QUANTITY" => "N",
 		"USE_ALSO_BUY" => "N",
+		"PAGER_BASE_LINK" => "",
+		"PAGER_PARAMS_NAME" => "arrPager",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE#/",
@@ -258,4 +270,15 @@ $APPLICATION->SetTitle("Каталог");?>
 		)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);
+
+    $APPLICATION->IncludeComponent(
+        "bitrix:main.include",
+        "",
+        array(
+            "AREA_FILE_SHOW" => "file",
+            "PATH" => SITE_DIR."include/donna/wholesale_dresses.php"),
+        false
+    );
+
+?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
