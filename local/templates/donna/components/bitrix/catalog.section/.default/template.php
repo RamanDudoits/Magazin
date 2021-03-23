@@ -22,8 +22,6 @@ use \Bitrix\Main\Localization\Loc;
 
 $this->setFrameMode(true);
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
-
-
 if (!empty($arResult['NAV_RESULT']))
 {
 	$navParams =  array(
@@ -155,7 +153,7 @@ $generalParams = array(
 $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navParams['NavNum']));
 $containerName = 'container-'.$navParams['NavNum'];
 
-if ($showTopPager)
+if (false)
 {
 	?>
 	<div data-pagination-num="<?=$navParams['NavNum']?>">
@@ -190,24 +188,33 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 			$this->AddDeleteAction($uniqueId, $item['DELETE_LINK'], $elementDelete, $elementDeleteParams);
 		}
 		?>
+
+        <div class="sort">
+            <div class="sort-left">
+                Сортировать:   <a class="active s-top">по цене</a> <a>по новизне</a>
+            </div>
+            <div class="sort-right">
+                <div  data-pagination-num="<?=$navParams['NavNum']?>">
+                    <!-- pagination-container -->
+                    <?=$arResult['NAV_STRING']?>
+                    <!-- pagination-container -->
+                </div>
+            </div>
+        </div>
+
 		<!-- items-container -->
         <div class="catalog-list">
+
 		<?
 		foreach ($arResult['ITEM_ROWS'] as $rowData)
 		{
-			$rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
+
+			$rowItems = array_splice($arResult['ITEMS'], 0, 10);
 			?>
-
-				<?
-				switch ($rowData['VARIANT'])
-				{
-					case 6:
-						?>
-
-								<?
+                <?
 								foreach ($rowItems as $item)
 								{
-//								    echo '<pre>'; print_r($item); echo '</pre>';
+
                                 $divSaleNew = '';
 								foreach ($item["PROPERTIES"]["LABEL"]["VALUE"] as $key => $value){
                                     if ($value == "new")
@@ -255,12 +262,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 									<?
 								}
 								?>
-
 						<? break;?>
-                <?}?>
-
-
-
 			<?
 		}?>
 		</div>
@@ -271,28 +273,6 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 </div>
 </div>
 <?php
-if (true)
-{
-	?>
-	<div class="row bx-<?=$arParams['TEMPLATE_THEME']?>">
-		<div class="btn btn-default btn-lg center-block" style="margin: 15px;"
-			data-use="show-more-<?=$navParams['NavNum']?>">
-			<?=$arParams['MESS_BTN_LAZY_LOAD']?>
-		</div>
-	</div>
-	<?
-}
-
-if (true)
-{
-	?>
-	<div data-pagination-num="<?=$navParams['NavNum']?>">
-		<!-- pagination-container -->
-		<?=$arResult['NAV_STRING']?>
-		<!-- pagination-container -->
-	</div>
-	<?
-}
 
 $signer = new \Bitrix\Main\Security\Sign\Signer;
 $signedTemplate = $signer->sign($templateName, 'catalog.section');

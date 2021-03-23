@@ -120,13 +120,6 @@ $containerName = 'catalog-top-container';
 		{
 			$rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
 			?>
-
-				<?
-				switch ($rowData['VARIANT'])
-				{
-					case 2:
-						?>
-
 								<?
 								foreach ($rowItems as $item)
 								{
@@ -178,12 +171,7 @@ $containerName = 'catalog-top-container';
 									<?
 								}
 								?>
-
 						<? break;?>
-                <?}?>
-
-
-
 			<?
 		}?>
 		</div>

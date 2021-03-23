@@ -217,3 +217,7 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
             </div>
         </div>
 
+
+
+
+

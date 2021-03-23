@@ -14,6 +14,9 @@ $APPLICATION->SetTitle("Каталог");?>
 	false
 );?>
 
+
+
+
 <?$APPLICATION->IncludeComponent(
 	"mycomponent:catalog", 
 	"donna-catalog", 
@@ -109,13 +112,13 @@ $APPLICATION->SetTitle("Каталог");?>
 		"LIST_META_DESCRIPTION" => "-",
 		"LIST_META_KEYWORDS" => "-",
 		"LIST_PRODUCT_BLOCKS_ORDER" => "props,buttons,price,sku,quantityLimit,quantity",
-		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'6','BIG_DATA':false},{'VARIANT':'6','BIG_DATA':false}]",
+		"LIST_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'6','BIG_DATA':false}]",
 		"LIST_PROPERTY_CODE_MOBILE" => array(
 		),
 		"LIST_SHOW_SLIDER" => "Y",
 		"LIST_SLIDER_INTERVAL" => "3000",
 		"LIST_SLIDER_PROGRESS" => "N",
-		"LOAD_ON_SCROLL" => "Y",
+		"LOAD_ON_SCROLL" => "N",
 		"MESSAGE_404" => "",
 		"MESS_BTN_ADD_TO_BASKET" => "В корзину",
 		"MESS_BTN_BUY" => "Купить",
@@ -132,9 +135,9 @@ $APPLICATION->SetTitle("Каталог");?>
 		"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 		"PAGER_SHOW_ALL" => "Y",
 		"PAGER_SHOW_ALWAYS" => "Y",
-		"PAGER_TEMPLATE" => ".default",
-		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "12",
+		"PAGER_TEMPLATE" => "donna-page-navigation",
+		"PAGER_TITLE" => "",
+		"PAGE_ELEMENT_COUNT" => "6",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
 		),
@@ -236,7 +239,7 @@ $APPLICATION->SetTitle("Каталог");?>
 			0 => "",
 			1 => "",
 		),
-		"LIST_OFFERS_LIMIT" => "5",
+		"LIST_OFFERS_LIMIT" => "2",
 		"DETAIL_OFFERS_FIELD_CODE" => array(
 			0 => "",
 			1 => "",

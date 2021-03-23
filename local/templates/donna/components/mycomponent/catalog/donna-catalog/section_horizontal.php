@@ -206,14 +206,6 @@ else
 						$sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
 					}
 				}
-				$APPLICATION->IncludeComponent(
-					"bitrix:catalog.section.list",
-					"",
-					$sectionListParams,
-					$component,
-					array("HIDE_ICONS" => "Y")
-				);
-				unset($sectionListParams);
 
 				if ($arParams["USE_COMPARE"] === "Y")
 				{
@@ -235,7 +227,7 @@ else
 						array("HIDE_ICONS" => "Y")
 					);
 				}
-
+//                echo '<pre>'; print_r($arParams); echo '</pre>';
 				$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					"",
