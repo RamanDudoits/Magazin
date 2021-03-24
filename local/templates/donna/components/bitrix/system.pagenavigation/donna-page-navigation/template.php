@@ -135,16 +135,3 @@ else
 </div>
 </div>
 </div>
-
-
-<div class="sort-right">
-    <div class="page-navigation">
-        <a href="#"><</a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <span>5</span>
-        <a href="#">></a>
-    </div>
-</div>

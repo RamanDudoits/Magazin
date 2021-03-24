@@ -153,17 +153,6 @@ $generalParams = array(
 $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navParams['NavNum']));
 $containerName = 'container-'.$navParams['NavNum'];
 
-if (false)
-{
-	?>
-	<div data-pagination-num="<?=$navParams['NavNum']?>">
-		<!-- pagination-container -->
-		<?=$arResult['NAV_STRING']?>
-		<!-- pagination-container -->
-	</div>
-	<?
-}
-
 if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 {
 	?>
@@ -191,7 +180,22 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 
         <div class="sort">
             <div class="sort-left">
-                Сортировать:   <a class="active s-top">по цене</a> <a>по новизне</a>
+                <?=GetMessage("SORT_PRICE_AND_DATE")?>
+                <?if ($_GET["ORDER"] == "DESC" && $_GET["SORT"] == "PRICE"):?>
+                    <a href="?SORT=PRICE&ORDER=ASC" class="active s-bottom"><?=GetMessage("SORT_PRICE")?></a>
+                <?elseif ($_GET["ORDER"] == "ASC" && $_GET["SORT"] == "PRICE"):?>
+                    <a href="?SORT=PRICE&ORDER=DESC" class="active s-top"><?=GetMessage("SORT_PRICE")?></a>
+                <?elseif ($_GET["SORT"] == "DATE" || !isset($_GET["SORT"])):?>
+                    <a href="?SORT=PRICE&ORDER=ASC"><?=GetMessage("SORT_PRICE")?></a>
+                <?endif;?>
+
+                <?if ($_GET["ORDER"] == "DESC" && $_GET["SORT"] == "DATE"):?>
+                    <a href="?SORT=DATE&ORDER=ASC" class="active s-bottom"><?=GetMessage("SORT_DATE")?></a>
+                <?elseif ($_GET["ORDER"] == "ASC" && $_GET["SORT"] == "DATE"):?>
+                    <a href="?SORT=DATE&ORDER=DESC" class="active s-top"><?=GetMessage("SORT_DATE")?></a>
+                <?elseif ($_GET["SORT"] == "PRICE" || !isset($_GET["SORT"])):?>
+                    <a href="?SORT=DATE&ORDER=ASC"><?=GetMessage("SORT_DATE")?></a>
+                <?endif;?>
             </div>
             <div class="sort-right">
                 <div  data-pagination-num="<?=$navParams['NavNum']?>">
@@ -208,13 +212,9 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 		<?
 		foreach ($arResult['ITEM_ROWS'] as $rowData)
 		{
-
 			$rowItems = array_splice($arResult['ITEMS'], 0, 10);
-			?>
-                <?
 								foreach ($rowItems as $item)
 								{
-
                                 $divSaleNew = '';
 								foreach ($item["PROPERTIES"]["LABEL"]["VALUE"] as $key => $value){
                                     if ($value == "new")
@@ -233,6 +233,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
                                                 <ul class="slides">
                                                     <li>
                                                         <a href="<?=$item["DETAIL_PAGE_URL"]?>">
+
                                                             <img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt="" >
                                                         </a>
 
@@ -270,6 +271,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 		?>
 		<!-- items-container -->
 		<?}?>
+</div>
 </div>
 </div>
 <?php

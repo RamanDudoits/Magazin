@@ -94,27 +94,21 @@ if ($arParams["USE_COMPARE"] === "Y")
 					}
 				}
 
-				if ($arParams["USE_COMPARE"] === "Y")
+				if ($_GET["SORT"] == "PRICE")
 				{
-					$APPLICATION->IncludeComponent(
-						"bitrix:catalog.compare.list",
-						"",
-						array(
-							"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-							"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-							"NAME" => $arParams["COMPARE_NAME"],
-							"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
-							"COMPARE_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["compare"],
-							"ACTION_VARIABLE" => (!empty($arParams["ACTION_VARIABLE"]) ? $arParams["ACTION_VARIABLE"] : "action"),
-							"PRODUCT_ID_VARIABLE" => $arParams["PRODUCT_ID_VARIABLE"],
-							'POSITION_FIXED' => isset($arParams['COMPARE_POSITION_FIXED']) ? $arParams['COMPARE_POSITION_FIXED'] : '',
-							'POSITION' => isset($arParams['COMPARE_POSITION']) ? $arParams['COMPARE_POSITION'] : ''
-						),
-						$component,
-						array("HIDE_ICONS" => "Y")
-					);
+				    $arParams["ELEMENT_SORT_FIELD"] = "SCALED_PRICE_1";
+                    if ($_GET["ORDER"] == "ASC") $arParams["ELEMENT_SORT_ORDER"]= "asc";
+                    if ($_GET["ORDER"] == "DESC") $arParams["ELEMENT_SORT_ORDER"]= "desc";
 				}
-//                echo '<pre>'; print_r($arParams); echo '</pre>';
+				if ($_GET["DATE"] == "DATE")
+				{
+				    $arParams["ELEMENT_SORT_FIELD"] = "TIMESTAMP_X";
+                    if ($_GET["ORDER"] == "ASC") $arParams["ELEMENT_SORT_ORDER"]= "asc";
+                    if ($_GET["ORDER"] == "DESC") $arParams["ELEMENT_SORT_ORDER"]= "desc";
+				}
+
+
+    //                echo '<pre>'; print_r($arParams); echo '</pre>';
 				$intSectionID = $APPLICATION->IncludeComponent(
 					"bitrix:catalog.section",
 					"",

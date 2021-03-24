@@ -14,9 +14,6 @@ $APPLICATION->SetTitle("Каталог");?>
 	false
 );?>
 
-
-
-
 <?$APPLICATION->IncludeComponent(
 	"mycomponent:catalog", 
 	"donna-catalog", 
@@ -71,8 +68,8 @@ $APPLICATION->SetTitle("Каталог");?>
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_TOP_PAGER" => "Y",
-		"ELEMENT_SORT_FIELD" => "shows",
-		"ELEMENT_SORT_FIELD2" => "shows",
+		"ELEMENT_SORT_FIELD" => "timestamp_x",
+		"ELEMENT_SORT_FIELD2" => "timestamp_x",
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "asc",
 		"FILTER_HIDE_ON_MOBILE" => "N",
@@ -140,6 +137,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"PAGE_ELEMENT_COUNT" => "6",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
+			0 => "BASE",
 		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "Y",
@@ -176,7 +174,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"TEMPLATE_THEME" => "site",
 		"TOP_ADD_TO_BASKET_ACTION" => "BUY",
 		"TOP_ELEMENT_COUNT" => "15",
-		"TOP_ELEMENT_SORT_FIELD" => "",
+		"TOP_ELEMENT_SORT_FIELD" => "SCALED_PRICE_1",
 		"TOP_ELEMENT_SORT_FIELD2" => "",
 		"TOP_ELEMENT_SORT_ORDER" => "",
 		"TOP_ELEMENT_SORT_ORDER2" => "",
@@ -259,6 +257,8 @@ $APPLICATION->SetTitle("Каталог");?>
 		"USE_ALSO_BUY" => "N",
 		"PAGER_BASE_LINK" => "",
 		"PAGER_PARAMS_NAME" => "arrPager",
+		"SIDEBAR_SECTION_POSITION" => "right",
+		"SIDEBAR_DETAIL_POSITION" => "right",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE#/",

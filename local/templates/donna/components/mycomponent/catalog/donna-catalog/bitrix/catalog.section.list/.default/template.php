@@ -181,41 +181,25 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
         </div>
     </div>
     </div>
+    <?$curPage = explode('/', $APPLICATION->GetCurPage());
+    $sectionName = "";
+    foreach ($curPage as $value)
+    {
+        if ($value != "")
+        {
+            $sectionName = $value;
+        }
+    }
+    $APPLICATION->IncludeComponent(
+    "bitrix:main.include",
+    "",
+    array(
+    "AREA_FILE_SHOW" => "file",
+    "PATH" => SITE_DIR."include/donna/" . $sectionName . ".php"),
+    false
+    );?>
 
 
-
-    <div class="catalog-content">
-        <div class="catalog-top">
-            <div class="catalog-top-text">
-                <h1>Платья</h1>
-                <p>Покупая женские платья оптом от производителя, владельцы магазинов хотят быть уверены, что этот товар будет
-                    пользоваться спросом. Ведь большинство женщин в заботе о собственном комфорте давно предпочли платьям
-                    и юбкам брючные костюмы и джинсы, не задумываясь при этом, что они добровольно отказываются
-                    от преимуществ, которыми их наградила природа. Стоит напомнить им, что правильно подобранное платье способно
-                    в мгновение ока вернуть дамам их природную привлекательность, сексуальность и желанность.</p>
-            </div>
-
-            <div class="offer">
-                <a href="#"><img src="images/opt.jpg" alt="" /></a>
-            </div>
-        </div>
-
-        <div class="sort">
-            <div class="sort-left">
-                Сортировать:   <a class="active s-top">по цене</a> <a>по новизне</a>
-            </div>
-            <div class="sort-right">
-                <div class="page-navigation">
-                    <a href="#"><</a>
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">4</a>
-                    <span>5</span>
-                    <a href="#">></a>
-                </div>
-            </div>
-        </div>
 
 
 

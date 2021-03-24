@@ -182,6 +182,7 @@ else
 			</div>
 			<div class="col-xs-12">
 				<?
+//                echo '<pre>'; print_r($arResult); echo '</pre>';
 				$sectionListParams = array(
 					"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 					"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -206,6 +207,14 @@ else
 						$sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
 					}
 				}
+
+                $APPLICATION->IncludeComponent(
+                    "bitrix:catalog.section.list",
+                    "",
+                    $sectionListParams,
+                    $component,
+                    ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
+                );
 
 				if ($arParams["USE_COMPARE"] === "Y")
 				{
