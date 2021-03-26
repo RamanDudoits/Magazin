@@ -20,6 +20,10 @@ use \Bitrix\Main\Localization\Loc;
  * |	<!-- component-end -->
  */
 
+if (isset($arResult["NAME"]))
+{
+    $APPLICATION->AddChainItem($arResult["NAME"], $arResult["SECTION_PAGE_URL"]);
+}
 $this->setFrameMode(true);
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
 if (!empty($arResult['NAV_RESULT']))
@@ -163,7 +167,6 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 }
 ?>
 
-<div class="catalog-section bx-<?=$arParams['TEMPLATE_THEME']?>" data-entity="<?=$containerName?>">
 	<?
 	if (!empty($arResult['ITEMS']) && !empty($arResult['ITEM_ROWS']))
 	{
@@ -205,77 +208,69 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
                 </div>
             </div>
         </div>
-
 		<!-- items-container -->
         <div class="catalog-list">
-
-		<?
-		foreach ($arResult['ITEM_ROWS'] as $rowData)
-		{
-			$rowItems = array_splice($arResult['ITEMS'], 0, 10);
-								foreach ($rowItems as $item)
-								{
-                                $divSaleNew = '';
-								foreach ($item["PROPERTIES"]["LABEL"]["VALUE"] as $key => $value){
+            <? foreach ($arResult['ITEM_ROWS'] as $rowData)
+            {
+                $rowItems = array_splice($arResult['ITEMS'], 0, 10);
+                    foreach ($rowItems as $item)
+                        {
+                            $divSaleNew = '';
+                                foreach ($item["PROPERTIES"]["LABEL"]["VALUE"] as $key => $value){
                                     if ($value == "new")
-                                    {
-                                        $divSaleNew = '<div class="new"></div>';
-                                    } elseif ($value == "limit")
                                         {
-                                            $divSaleNew = '<div class="sale"></div>';
-                                        }
-                                }
-								    ?>
-                                    <div class="goods">
-                                    <?=$divSaleNew?>
-                                        <div class="goods-inner">
-                                            <div class="goods-slider">
-                                                <ul class="slides">
-                                                    <li>
-                                                        <a href="<?=$item["DETAIL_PAGE_URL"]?>">
+                                            $divSaleNew = '<div class="new"></div>';
+                                        } elseif ($value == "limit")
+                                            {
+                                                $divSaleNew = '<div class="sale"></div>';
+                                            }
+                                    }
+                                        ?>
+                                        <div class="goods">
+                                        <?=$divSaleNew?>
+                                            <div class="goods-inner">
+                                                <div class="goods-slider">
+                                                    <ul class="slides">
+                                                        <li>
+                                                            <a href="<?=$item["DETAIL_PAGE_URL"]?>">
 
-                                                            <img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt="" >
-                                                        </a>
+                                                                <img src="<?=$item["PREVIEW_PICTURE"]["SRC"]?>" alt="" >
+                                                            </a>
 
-                                                    </li>
-                                                </ul>
-                                                <a href="ajax.html" class="quick-view various fancybox.ajax" data-fancybox-type="ajax">Быстрый просмотр</a>
-                                            </div>
-
-                                            <div class="goods-description">
-                                                <h3><a href="<?=$item["DETAIL_PAGE_URL"]?>"><?=$item["NAME"]?></a></h3>
-
-                                                <div class="art"><?=$item["PROPERTIES"]["ARTNUMBER"]["NAME"]. ": " . $item["PROPERTIES"]["ARTNUMBER"]["VALUE"]?></div>
-                                                <? foreach ( $item["PRICE_MATRIX"]["MATRIX"] as $key => $price) {?>
-                                                    <div class="cost"><?= $price["ZERO-INF"]["PRICE"] . " ". $price["ZERO-INF"]["CURRENCY"] ?></div>
-                                                <?}?>
-                                                <div class="sizes">
-                                                    <div><?=$item["PROPERTIES"]["SIZES"]["NAME"];?></div>
-                                                    <ul>
-                                                        <?foreach ($item["PROPERTIES"]["SIZES"]["VALUE"] as $size):?>
-                                                        <li class="active"><?=$size; ?></li>
-                                                            <?endforeach;?>
+                                                        </li>
                                                     </ul>
+                                                    <a href="ajax.html" class="quick-view various fancybox.ajax" data-fancybox-type="ajax">Быстрый просмотр</a>
+                                                </div>
+
+                                                <div class="goods-description">
+                                                    <h3><a href="<?=$item["DETAIL_PAGE_URL"]?>"><?=$item["NAME"]?></a></h3>
+
+                                                    <div class="art"><?=$item["PROPERTIES"]["ARTNUMBER"]["NAME"]. ": " . $item["PROPERTIES"]["ARTNUMBER"]["VALUE"]?></div>
+                                                    <? foreach ( $item["PRICE_MATRIX"]["MATRIX"] as $key => $price) {?>
+                                                        <div class="cost"><?= $price["ZERO-INF"]["PRICE"] . " ". $price["ZERO-INF"]["CURRENCY"] ?></div>
+                                                    <?}?>
+                                                    <div class="sizes">
+                                                        <div><?=$item["PROPERTIES"]["SIZES"]["NAME"];?></div>
+                                                        <ul>
+                                                            <?foreach ($item["PROPERTIES"]["SIZES"]["VALUE"] as $size):?>
+                                                            <li class="active"><?=$size; ?></li>
+                                                                <?endforeach;?>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-									<?
-								}
-								?>
-						<? break;?>
-			<?
-		}?>
+                                        <?
+                                    }
+                                    ?>
+                            <? break;?>
+            <?}
+            unset($generalParams, $rowItems);?>
 		</div>
-		<?unset($generalParams, $rowItems);
-		?>
 		<!-- items-container -->
-		<?}?>
-</div>
-</div>
-</div>
-<?php
+    <?}?>
 
+<?php
 $signer = new \Bitrix\Main\Security\Sign\Signer;
 $signedTemplate = $signer->sign($templateName, 'catalog.section');
 $signedParams = $signer->sign(base64_encode(serialize($arResult['ORIGINAL_PARAMETERS'])), 'catalog.section');
@@ -319,3 +314,4 @@ $signedParams = $signer->sign(base64_encode(serialize($arResult['ORIGINAL_PARAME
 	});
 </script>
 <!-- component-end -->
+

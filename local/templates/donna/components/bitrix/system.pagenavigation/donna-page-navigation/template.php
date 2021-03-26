@@ -80,12 +80,6 @@ else
                 <?endif?>
 
 
-
-
-
-
-
-
             <?else:?>
 
                 <?if ($arResult["NavPageNomer"] > 1):?>
@@ -129,9 +123,9 @@ else
                     <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">></a>
                 <?endif?>
             <?endif?>
-        </ul>
+
         <div style="clear:both"></div>
     </div>
 </div>
 </div>
-</div>
+

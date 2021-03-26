@@ -15,13 +15,13 @@
         <?endfor;?>
         </ul>
 
-<ul>
-    <?php for ($i = 3; $i < count($arResult); $i++):?>
-        <?if($arResult[$i]["SELECTED"]):?>
-            <li><a href="<?=$arResult[$i]["LINK"]?>" class="selected"><?=$arResult[$i]["TEXT"]?></a></li>
-        <?else:?>
-            <li><a href="<?=$arResult[$i]["LINK"]?>"><?=$arResult[$i]["TEXT"]?></a></li>
-        <?endif?>
-    <?endfor;?>
-</ul>
+        <ul>
+            <?php for ($i = 3; $i < count($arResult); $i++):?>
+                <?if($arResult[$i]["SELECTED"]):?>
+                    <li><a href="<?=$arResult[$i]["LINK"]?>" class="selected"><?=$arResult[$i]["TEXT"]?></a></li>
+                <?else:?>
+                    <li><a href="<?=$arResult[$i]["LINK"]?>"><?=$arResult[$i]["TEXT"]?></a></li>
+                <?endif?>
+            <?endfor;?>
+        </ul>
 </div>

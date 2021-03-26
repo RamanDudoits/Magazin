@@ -3,8 +3,8 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");?>
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:breadcrumb", 
-	"donna-breadcrumbs", 
+	"bitrix:breadcrumb",
+	"donna-breadcrumbs",
 	array(
 		"START_FROM" => "0",
 		"PATH" => "",
@@ -73,7 +73,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "asc",
 		"FILTER_HIDE_ON_MOBILE" => "N",
-		"FILTER_VIEW_MODE" => "VERTICAL",
+		"FILTER_VIEW_MODE" => "HORIZONTAL",
 		"GIFTS_DETAIL_BLOCK_TITLE" => "Выберите один из подарков",
 		"GIFTS_DETAIL_HIDE_BLOCK_TITLE" => "N",
 		"GIFTS_DETAIL_PAGE_ELEMENT_COUNT" => "4",
@@ -173,7 +173,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"SIDEBAR_SECTION_SHOW" => "N",
 		"TEMPLATE_THEME" => "site",
 		"TOP_ADD_TO_BASKET_ACTION" => "BUY",
-		"TOP_ELEMENT_COUNT" => "15",
+		"TOP_ELEMENT_COUNT" => "6",
 		"TOP_ELEMENT_SORT_FIELD" => "SCALED_PRICE_1",
 		"TOP_ELEMENT_SORT_FIELD2" => "",
 		"TOP_ELEMENT_SORT_ORDER" => "",
@@ -181,7 +181,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"TOP_ENLARGE_PRODUCT" => "PROP",
 		"TOP_LINE_ELEMENT_COUNT" => "12",
 		"TOP_PRODUCT_BLOCKS_ORDER" => "props,buttons,sku,price,quantityLimit,quantity",
-		"TOP_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
+		"TOP_PRODUCT_ROW_VARIANTS" => "[{'VARIANT':'2','BIG_DATA':false},{'VARIANT':'2','BIG_DATA':false}]",
 		"TOP_SHOW_SLIDER" => "N",
 		"TOP_SLIDER_INTERVAL" => "3000",
 		"TOP_SLIDER_PROGRESS" => "Y",
@@ -195,7 +195,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"USE_COMPARE" => "N",
 		"USE_ELEMENT_COUNTER" => "Y",
 		"USE_ENHANCED_ECOMMERCE" => "N",
-		"USE_FILTER" => "N",
+		"USE_FILTER" => "Y",
 		"USE_GIFTS_DETAIL" => "Y",
 		"USE_GIFTS_MAIN_PR_SECTION_LIST" => "Y",
 		"USE_GIFTS_SECTION" => "Y",
@@ -216,7 +216,8 @@ $APPLICATION->SetTitle("Каталог");?>
 			0 => "",
 			1 => "",
 		),
-		"FILTER_PRICE_CODE" => "",
+		"FILTER_PRICE_CODE" => array(
+		),
 		"SEF_FOLDER" => "/catalog-donna/",
 		"PRODUCT_DISPLAY_MODE" => "N",
 		"OFFER_ADD_PICT_PROP" => "-",
@@ -262,7 +263,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE#/",
-			"element" => "#SECTION_CODE#/#ELEMENT_ID#/",
+			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 			"compare" => "compare.php?action=#ACTION_CODE#",
 			"smart_filter" => "#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/",
 		),
