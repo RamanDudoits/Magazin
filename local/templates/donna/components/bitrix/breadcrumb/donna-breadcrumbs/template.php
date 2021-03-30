@@ -49,6 +49,6 @@ for($index = 0; $index < $itemSize; $index++)
 	}
 }
 
-//$strReturn .= '</div>';
+$strReturn .= '</div>';
 
 return $strReturn;

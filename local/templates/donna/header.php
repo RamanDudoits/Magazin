@@ -15,11 +15,10 @@ Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/scripts/jquery.zoom.min.js");
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/scripts/jquery.fancybox-media.js");
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/scripts/scripts.js");
 Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/fix.js");
-Asset::getInstance()->addJs('https://code.jquery.com/jquery-1.11.3.min.js');
-//Asset::getInstance()->addJs('http://html5shiv.googlecode.com/svn/trunk/html5.js');
-Asset::getInstance()->addJs('https://code.jquery.com/jquery-1.11.3.min.js');
-
+Asset::getInstance()->addJs('https://code.jquery.com/jquery-1.12.4.js');
+Asset::getInstance()->addJs('https://code.jquery.com/ui/1.12.1/jquery-ui.js');
 ?>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<![endif]-->

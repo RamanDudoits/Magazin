@@ -17,6 +17,11 @@
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 
+
+global $arrFilter;
+$arrFilter = [];
+
+
 $sectionListParams = array(
 	"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 	"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -42,16 +47,52 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
 
     <div class="sidebar-left">
         <div class="drop-wrap">
-                           <? $APPLICATION->IncludeComponent(
-                                "bitrix:catalog.section.list",
-                                "",
-                                $sectionListParams,
-                                $component,
-                                ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
-                            );
-                            unset($sectionListParams);
+            <? $APPLICATION->IncludeComponent(
+                    "bitrix:catalog.section.list",
+                "",
+                $sectionListParams,
+                $component,
+                ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
+            );
+            unset($sectionListParams);?>
 
-                            ?>
+            <div class="filter">
+                <?
+                $APPLICATION->IncludeComponent(
+                    "bitrix:catalog.smart.filter",
+                    "donna_smart_filtre",
+                    array(
+                        "FILTER_NAME" => "arrFilter",
+                        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                        "SECTION_ID" => "0",
+
+
+                        "PRICE_CODE" => $arParams["~PRICE_CODE"],
+                        "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                        "CACHE_TIME" => $arParams["CACHE_TIME"],
+                        "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                        "SAVE_IN_SESSION" => "N",
+                        "FILTER_VIEW_MODE" => $arParams["FILTER_VIEW_MODE"],
+                        "XML_EXPORT" => "N",
+                        "SECTION_TITLE" => "NAME",
+                        "SECTION_DESCRIPTION" => "DESCRIPTION",
+                        'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
+                        "TEMPLATE_THEME" => $arParams["TEMPLATE_THEME"],
+                        'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
+                        'CURRENCY_ID' => $arParams['CURRENCY_ID'],
+                        "SEF_MODE" => $arParams["SEF_MODE"],
+                        "SEF_RULE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"],
+                        "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+                        "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
+                        "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
+                    ),
+                    array('HIDE_ICONS' => 'Y')
+                );
+                ?>
+
+            </div>
+
         </div>
     </div>
 
@@ -113,7 +154,8 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
                             "bitrix:catalog.section",
                             "",
                             array(
-                                    "SHOW_ALL_WO_SECTION"=>"Y",
+
+                                "SHOW_ALL_WO_SECTION"=>"Y",
                                 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                                 "ELEMENT_SORT_FIELD" => $arParams["ELEMENT_SORT_FIELD"],
@@ -133,7 +175,7 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
                                 "SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
                                 "PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
                                 "PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-                                "FILTER_NAME" => $arParams["FILTER_NAME"],
+                                "FILTER_NAME" => "arrFilter",
                                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                                 "CACHE_TIME" => $arParams["CACHE_TIME"],
                                 "CACHE_FILTER" => $arParams["CACHE_FILTER"],

@@ -216,7 +216,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
                     foreach ($rowItems as $item)
                         {
                             $divSaleNew = '';
-                                foreach ($item["PROPERTIES"]["LABEL"]["VALUE"] as $key => $value){
+                                foreach ($item["PROPERTIES"]["LABEL"]["VALUE_XML_ID"] as $key => $value){
                                     if ($value == "new")
                                         {
                                             $divSaleNew = '<div class="new"></div>';

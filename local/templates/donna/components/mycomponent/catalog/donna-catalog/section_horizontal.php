@@ -63,7 +63,6 @@ else
                                 unset($sectionListParams);?>
 
                             <div class="filter">
-                                    <div class="col-xs-12<?=(isset($arParams['FILTER_HIDE_ON_MOBILE']) && $arParams['FILTER_HIDE_ON_MOBILE'] === 'Y' ? ' hidden-xs' : '')?>">
                                         <?
                                             $APPLICATION->IncludeComponent(
                                                 "bitrix:catalog.smart.filter",
@@ -95,7 +94,7 @@ else
                                                 array('HIDE_ICONS' => 'Y')
                                             );
                                         ?>
-                                    </div>
+
                             </div>
                         </div>
                     </div>
@@ -121,7 +120,7 @@ else
                             );?>
                         </div>
                     <?
-//                        echo '<pre>'; print_r($arResult); echo '</pre>';
+//                        echo '<pre>'; print_r($arParams); echo '</pre>';
                         $intSectionID = $APPLICATION->IncludeComponent(
                             "bitrix:catalog.section",
                             "",
@@ -251,6 +250,7 @@ else
                             $component
                         );
                         ?>
+
 			        </div>
                 </div>
 		</div>

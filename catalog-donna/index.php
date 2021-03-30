@@ -260,17 +260,13 @@ $APPLICATION->SetTitle("Каталог");?>
 		"PAGER_PARAMS_NAME" => "arrPager",
 		"SIDEBAR_SECTION_POSITION" => "right",
 		"SIDEBAR_DETAIL_POSITION" => "right",
+		"CACHE_NOTES" => "",
 		"SEF_URL_TEMPLATES" => array(
 			"sections" => "",
 			"section" => "#SECTION_CODE#/",
 			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
-			"compare" => "compare.php?action=#ACTION_CODE#",
-			"smart_filter" => "#SECTION_ID#/filter/#SMART_FILTER_PATH#/apply/",
-		),
-		"VARIABLE_ALIASES" => array(
-			"compare" => array(
-				"ACTION_CODE" => "action",
-			),
+			"compare" => "compare/",
+			"smart_filter" => "filter/#SMART_FILTER_PATH#",
 		)
 	),
 	false
