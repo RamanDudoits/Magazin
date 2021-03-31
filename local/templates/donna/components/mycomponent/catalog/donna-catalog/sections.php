@@ -17,6 +17,14 @@
 $this->setFrameMode(true);
 $this->addExternalCss("/bitrix/css/main/bootstrap.css");
 
+if (isset($arParams['USE_COMMON_SETTINGS_BASKET_POPUP']) && $arParams['USE_COMMON_SETTINGS_BASKET_POPUP'] === 'Y')
+{
+    $basketAction = isset($arParams['COMMON_ADD_TO_BASKET_ACTION']) ? $arParams['COMMON_ADD_TO_BASKET_ACTION'] : '';
+}
+else
+{
+    $basketAction = isset($arParams['SECTION_ADD_TO_BASKET_ACTION']) ? $arParams['SECTION_ADD_TO_BASKET_ACTION'] : '';
+}
 
 global $arrFilter;
 $arrFilter = [];
@@ -58,16 +66,30 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
 
             <div class="filter">
                 <?
+                global $mySmartFilter;
+                $mySmartFilter = ['SECTION_ID' => [ 16, 17, 18, 19, 23, 26, 24]];
+
+                global $arrFilter;
+                $arrFilter = [];
+
+
+                if(empty($arResult["VARIABLES"]["SMART_FILTER_PATH"])){
+                    $re = '/^\/.*\/filter\/(.*)\/apply\//';
+                    $str = Bitrix\Main\Context::getCurrent()->getRequest()->getRequestedPage();
+                    preg_match($re, $str, $matches);
+                    $arResult["VARIABLES"]["SMART_FILTER_PATH"] =$matches[1];
+                }
+
                 $APPLICATION->IncludeComponent(
                     "bitrix:catalog.smart.filter",
                     "donna_smart_filtre",
                     array(
+                        "PREFILTER_NAME" => "mySmartFilter",
                         "FILTER_NAME" => "arrFilter",
                         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                        "SECTION_ID" => "0",
-
-
+                        "SHOW_ALL_WO_SECTION"=>"Y",
+                        "SECTION_ID" => 0,
                         "PRICE_CODE" => $arParams["~PRICE_CODE"],
                         "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                         "CACHE_TIME" => $arParams["CACHE_TIME"],
@@ -82,21 +104,23 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
                         'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
                         'CURRENCY_ID' => $arParams['CURRENCY_ID'],
                         "SEF_MODE" => $arParams["SEF_MODE"],
-                        "SEF_RULE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"],
-                        "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+                        "SEF_RULE" => "/catalog-donna/filter/#SMART_FILTER_PATH#/apply/",
                         "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                         "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
+                        "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
                     ),
+                    $component,
                     array('HIDE_ICONS' => 'Y')
                 );
                 ?>
 
             </div>
-
         </div>
     </div>
 
-
+    <?echo '<pre>';
+                print_r($arResult["VARIABLES"]);
+                echo '</pre>';?>
 
     <div class="catalog-content">
         <div class="catalog-top">
@@ -149,12 +173,12 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
                             if ($_GET["ORDER"] == "ASC") $arParams["ELEMENT_SORT_ORDER"]= "asc";
                             if ($_GET["ORDER"] == "DESC") $arParams["ELEMENT_SORT_ORDER"]= "desc";
                         }
-//                        echo '<pre>'; print_r($arResult); echo '</pre>';
-                        $intSectionID = $APPLICATION->IncludeComponent(
+//                        echo '<pre>'; print_r($arResult["VARIABLES"]); echo '</pre>';
+                         $APPLICATION->IncludeComponent(
                             "bitrix:catalog.section",
                             "",
                             array(
-
+                                "FILTER_NAME" => "arrFilter",
                                 "SHOW_ALL_WO_SECTION"=>"Y",
                                 "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                                 "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -175,7 +199,6 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
                                 "SECTION_ID_VARIABLE" => $arParams["SECTION_ID_VARIABLE"],
                                 "PRODUCT_QUANTITY_VARIABLE" => $arParams["PRODUCT_QUANTITY_VARIABLE"],
                                 "PRODUCT_PROPS_VARIABLE" => $arParams["PRODUCT_PROPS_VARIABLE"],
-                                "FILTER_NAME" => "arrFilter",
                                 "CACHE_TYPE" => $arParams["CACHE_TYPE"],
                                 "CACHE_TIME" => $arParams["CACHE_TIME"],
                                 "CACHE_FILTER" => $arParams["CACHE_FILTER"],

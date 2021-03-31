@@ -29,7 +29,7 @@ else
                         <div class="drop-wrap">
 
                                 <?
-                //             echo '<pre>'; print_r($arResult); echo '</pre>';
+
                                 $sectionListParams = array(
                                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -86,11 +86,12 @@ else
                                                     'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
                                                     'CURRENCY_ID' => $arParams['CURRENCY_ID'],
                                                     "SEF_MODE" => $arParams["SEF_MODE"],
-                                                    "SEF_RULE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"],
+                                                    "SEF_RULE" => "/catalog-donna/#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
                                                     "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
                                                     "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                                                     "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
                                                 ),
+                                                $component,
                                                 array('HIDE_ICONS' => 'Y')
                                             );
                                         ?>
@@ -105,7 +106,11 @@ else
                             $sectionName = "";
                             foreach ($curPage as $value)
                             {
-                                if ($value != "")
+                                if ($value == "filter")
+                                {
+                                    break;
+                                }
+                                elseif ($value != "")
                                 {
                                     $sectionName = $value;
                                 }
@@ -120,7 +125,6 @@ else
                             );?>
                         </div>
                     <?
-//                        echo '<pre>'; print_r($arParams); echo '</pre>';
                         $intSectionID = $APPLICATION->IncludeComponent(
                             "bitrix:catalog.section",
                             "",
