@@ -175,14 +175,17 @@ echo '<pre>';print_r($arResult['DETAIL_PICTURE']['SRC']);echo '</pre>';
             <div class="share">
                 <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
                 <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8"></script>
-                <div class="share-fr">Рассказать друзьям:</div>
+                <div class="share-fr"><?=Loc::getMessage('SHARE_FRIENDS')?></div>
                 <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,lj" data-size="s">
             </div>
-
-            <div class="your-display">
-                Оттенок и насыщенность изображения зависит
-                от цветовых настроек Вашего монитора.
-            </div>
+                <? $APPLICATION->IncludeComponent(
+                    "bitrix:main.include",
+                    "",
+                    array(
+                        "AREA_FILE_SHOW" => "file",
+                        "PATH" => SITE_DIR."include/donna/warning.php"),
+                    false
+                );?>
         </div>
 
 
