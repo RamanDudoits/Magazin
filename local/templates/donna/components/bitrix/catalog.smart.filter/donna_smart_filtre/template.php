@@ -11,23 +11,14 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+//echo '<pre>';
+//print_r($arResult);
+//echo '</pre>'; ?>
 
-?>
         <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="<?echo $arResult["FORM_ACTION"]?>" method="get" class="smartfilter">
             <?foreach($arResult["HIDDEN"] as $arItem):?>
                 <input type="hidden" name="<?echo $arItem["CONTROL_NAME"]?>" id="<?echo $arItem["CONTROL_ID"]?>" value="<?echo $arItem["HTML_VALUE"]?>" />
             <?endforeach;?>
-
-
-
-
-
-
-
-
-
-
-
 
 
             <? //not prices
@@ -481,10 +472,9 @@ $this->setFrameMode(true);
                                 break;
                                 default://CHECKBOXES
                                 ?>
-                                    <div class="title-filter"><?$arItem["NAME"]?></div>
+                                    <div class="title-filter"><?=$arItem["NAME"]?></div>
                                     <ul>
                                         <?foreach($arItem["VALUES"] as $val => $ar):?>
-
                                             <li><input type="checkbox"
                                                        id="<? echo $ar["CONTROL_ID"] ?>"
                                                        name="<? echo $ar["CONTROL_NAME"] ?>"
@@ -536,6 +526,7 @@ $this->setFrameMode(true);
 
             ?>
             <div class="filter-wrap">
+                <div class="title-filter"><?=$arItem["NAME"]?></div>
                 <script>
                     $( document ).ready(function() {
 
@@ -607,23 +598,15 @@ $this->setFrameMode(true);
             <?endif;
 				}?>
 
-
-
             <div class="filter-wrap">
                             <input
-                                    class="btn btn-themes"
+                                    class="choose"
                                     type="submit"
                                     id="set_filter"
                                     name="set_filter"
                                     value="<?=GetMessage("CT_BCSF_SET_FILTER")?>"
                             />
-                            <input
-                                    class="btn btn-link"
-                                    type="submit"
-                                    id="del_filter"
-                                    name="del_filter"
-                                    value="<?=GetMessage("CT_BCSF_DEL_FILTER")?>"
-                            />
+
                             <div class="bx-filter-popup-result <?if ($arParams["FILTER_VIEW_MODE"] == "VERTICAL") echo $arParams["POPUP_POSITION"]?>" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?> style="display: inline-block;">
                                 <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
                                 <span class="arrow"></span>

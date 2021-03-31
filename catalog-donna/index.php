@@ -266,7 +266,7 @@ $APPLICATION->SetTitle("Каталог");?>
 			"section" => "#SECTION_CODE#/",
 			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 			"compare" => "compare/",
-			"smart_filter" => "filter/#SMART_FILTER_PATH#",
+			"smart_filter" => "#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
 		)
 	),
 	false

@@ -118,9 +118,9 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
         </div>
     </div>
 
-    <?echo '<pre>';
-                print_r($arResult["VARIABLES"]);
-                echo '</pre>';?>
+<!--    --><?//echo '<pre>';
+//                print_r($arResult["VARIABLES"]);
+//                echo '</pre>';?>
 
     <div class="catalog-content">
         <div class="catalog-top">
