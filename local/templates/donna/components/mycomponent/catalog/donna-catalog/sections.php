@@ -66,25 +66,20 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
 
             <div class="filter">
                 <?
-                global $mySmartFilter;
-                $mySmartFilter = ['SECTION_ID' => [ 16, 17, 18, 19, 23, 26, 24]];
-
                 global $arrFilter;
-                $arrFilter = [];
 
-
-                if(empty($arResult["VARIABLES"]["SMART_FILTER_PATH"])){
-                    $re = '/^\/.*\/filter\/(.*)\/apply\//';
-                    $str = Bitrix\Main\Context::getCurrent()->getRequest()->getRequestedPage();
-                    preg_match($re, $str, $matches);
-                    $arResult["VARIABLES"]["SMART_FILTER_PATH"] =$matches[1];
-                }
+//                if(empty($arResult["VARIABLES"]["SMART_FILTER_PATH"])){
+//                    $re = '/^\/.*\/filter\/(.*)\/apply\//';
+//                    $str = Bitrix\Main\Context::getCurrent()->getRequest()->getRequestedPage();
+//                    preg_match($re, $str, $matches);
+//                    $arResult["VARIABLES"]["SMART_FILTER_PATH"] =$matches[1];
+//                }
 
                 $APPLICATION->IncludeComponent(
                     "bitrix:catalog.smart.filter",
                     "donna_smart_filtre",
                     array(
-                        "PREFILTER_NAME" => "mySmartFilter",
+
                         "FILTER_NAME" => "arrFilter",
                         "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                         "IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -119,7 +114,7 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
     </div>
 
 <!--    --><?//echo '<pre>';
-//                print_r($arResult["VARIABLES"]);
+//                print_r( $arParams);
 //                echo '</pre>';?>
 
     <div class="catalog-content">

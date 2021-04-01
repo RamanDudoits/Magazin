@@ -243,7 +243,8 @@ $APPLICATION->SetTitle("Каталог");?>
 			0 => "",
 			1 => "",
 		),
-		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => "",
+		"DETAIL_MAIN_BLOCK_OFFERS_PROPERTY_CODE" => array(
+		),
 		"OFFERS_SORT_FIELD" => "shows",
 		"OFFERS_SORT_ORDER" => "asc",
 		"OFFERS_SORT_FIELD2" => "shows",
