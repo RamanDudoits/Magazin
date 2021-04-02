@@ -100,9 +100,7 @@ else
                         </div>
                     </div>
 
-                   <?echo '<pre>';
-                                    print_r( $arResult["VARIABLES"]["SMART_FILTER_PATH"]);
-                                    echo '</pre>';?>
+
                     <div class="catalog-content">
                         <div class="catalog-top">
 

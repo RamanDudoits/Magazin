@@ -123,7 +123,6 @@ $containerName = 'catalog-top-container';
 								<?
 								foreach ($rowItems as $item)
 								{
-//								    echo '<pre>'; print_r($item); echo '</pre>';
                                 $divSaleNew = '';
 								foreach ($item["PROPERTIES"]["LABEL"]["VALUE"] as $key => $value){
                                     if ($value == "new")

@@ -112,11 +112,6 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
             </div>
         </div>
     </div>
-
-<!--    --><?//echo '<pre>';
-//                print_r( $arParams);
-//                echo '</pre>';?>
-
     <div class="catalog-content">
         <div class="catalog-top">
 

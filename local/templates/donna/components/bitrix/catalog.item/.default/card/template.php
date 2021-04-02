@@ -1,0 +1,272 @@
+<? if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
+
+use \Bitrix\Main\Localization\Loc;
+
+/**
+ * @global CMain $APPLICATION
+ * @var array $arParams
+ * @var array $item
+ * @var array $actualItem
+ * @var array $minOffer
+ * @var array $itemIds
+ * @var array $price
+ * @var array $measureRatio
+ * @var bool $haveOffers
+ * @var bool $showSubscribe
+ * @var array $morePhoto
+ * @var bool $showSlider
+ * @var bool $itemHasDetailUrl
+ * @var string $imgTitle
+ * @var string $productTitle
+ * @var string $buttonSizeClass
+ * @var CatalogSectionComponent $component
+ */
+?>
+
+<div class="goods">
+    <? if ($item['LABEL'])
+    {
+        foreach ($item["PROPERTIES"]["LABEL"]["VALUE_XML_ID"] as $key => $value)
+        {
+            if ($value == "new")
+            {
+                $divSaleNew = '<div class="new"></div>';
+            } elseif ($value == "limit")
+            {
+                $divSaleNew = '<div class="sale"></div>';
+            }
+        }
+
+        echo $divSaleNew;
+    }?>
+
+    <div class="goods-inner">
+        <div class="goods-slider">
+
+           <? $newWidth = 70;
+            $newHeight = 107;
+            $renderImage = CFile::ResizeImageGet($item['PREVIEW_PICTURE']['SRC'], Array("width" => $newWidth, "height" => $newHeight));?>
+            <?= CFile::ShowImage($renderImage['src'], $newWidth, $newHeight, "border=0", "", true);?>
+	<a class="product-item-image-wrapper" href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$imgTitle?>"
+			style="background-image: url('<?=$item['PREVIEW_PICTURE']['SRC']?>'); <?=($showSlider ? 'display: none;' : '')?>">
+	</a>
+
+            <ul class="slides">
+                <li><img src="images/goods.jpg" alt="" ></li>
+                <li><img src="images/goods.jpg" alt="" ></li>
+            </ul>
+            <a href="ajax.html" class="quick-view various fancybox.ajax" data-fancybox-type="ajax">Быстрый просмотр</a>
+        </div>
+
+
+
+
+
+
+    <div class="goods-description">
+        <h3><a href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$productTitle?>"><?=$productTitle?></a></h3>
+	<?
+	if (!empty($arParams['PRODUCT_BLOCKS_ORDER']))
+	{
+		foreach ($arParams['PRODUCT_BLOCKS_ORDER'] as $blockName)
+		{
+			switch ($blockName)
+			{
+				case 'price': ?>
+
+                    <div class="cost">
+						<span class="product-item-price-current" id="<?=$itemIds['PRICE']?>">
+							<?
+							if (!empty($price))
+							{
+								if ($arParams['PRODUCT_DISPLAY_MODE'] === 'N' && $haveOffers)
+								{
+									echo Loc::getMessage(
+										'CT_BCI_TPL_MESS_PRICE_SIMPLE_MODE',
+										array(
+											'#PRICE#' => $price['PRINT_RATIO_PRICE'],
+											'#VALUE#' => $measureRatio,
+											'#UNIT#' => $minOffer['ITEM_MEASURE']['TITLE']
+										)
+									);
+								}
+								else
+								{
+									echo $price['RATIO_PRICE'] . " " . $price['CURRENCY'];
+								}
+							}
+							?>
+						</span>
+                        <?
+                        if ($arParams['SHOW_OLD_PRICE'] === 'Y')
+                        {
+//                            echo "<pre>"; print_r( $price); echo "</pre>";
+                            ?>
+                            <span class="product-item-price-old" id="<?=$itemIds['PRICE_OLD']?>"
+								<?=($price['RATIO_PRICE'] >= $price['RATIO_BASE_PRICE'] ? 'style="display: none;"' : '')?>>
+								<?=$price['RATIO_BASE_PRICE'] . " " . $price['CURRENCY']?>
+							</span>&nbsp;
+                            <?
+                        }
+                        ?>
+
+                    </div>
+					<?
+					break;
+
+				case 'props':
+                    $showProductProps = !empty($item['DISPLAY_PROPERTIES']);
+                    $showOfferProps = $arParams['PRODUCT_DISPLAY_MODE'] === 'Y' && $item['OFFERS_PROPS_DISPLAY'];
+
+                    if ($showProductProps || $showOfferProps)
+                    {
+                        ?>
+                        <?
+                        if ($showProductProps)
+                        {
+                            foreach ($item['DISPLAY_PROPERTIES'] as $code => $displayProperty)
+                            {
+
+                                ?>
+
+                                <div class="art">
+                                    <?=$displayProperty['NAME']?>
+                                    <?=$displayProperty['DISPLAY_VALUE']?>
+                                </div>
+                                <?
+                            }
+                        }
+                    }
+                    break;
+
+				case 'sku':?>
+				<?	if ($arParams['PRODUCT_DISPLAY_MODE'] === 'Y' && $haveOffers && !empty($item['OFFERS_PROP']))
+					{
+							foreach ($arParams['SKU_PROPS'] as $skuProperty)
+							{
+								$propertyId = $skuProperty['ID'];
+								$skuProperty['NAME'] = htmlspecialcharsbx($skuProperty['NAME']);
+								if (!isset($item['SKU_TREE_VALUES'][$propertyId]))
+									continue;
+								?>
+                                            <div class="sizes">
+                                                <div><?=$skuProperty['NAME']?></div>
+
+                                                <ul>
+                                                    <?foreach ($skuProperty['VALUES'] as $value)
+                                                    {
+                                                        if (!isset($item['SKU_TREE_VALUES'][$propertyId][$value['ID']]))
+                                                            continue;
+
+                                                        $value['NAME'] = htmlspecialcharsbx($value['NAME']);
+
+                                                        ?>
+                                                        <li title="<?=$value['NAME']?>"
+                                                            data-treevalue="<?=$propertyId?>_<?=$value['ID']?>" data-onevalue="<?=$value['ID']?>">
+                                                            <?=$value['NAME']?>
+                                                        </li>
+                                                    <?}?>
+                                                </ul>
+                                            </div>
+								<?
+							}
+							?>
+
+						<?
+						foreach ($arParams['SKU_PROPS'] as $skuProperty)
+						{
+							if (!isset($item['OFFERS_PROP'][$skuProperty['CODE']]))
+								continue;
+
+							$skuProps[] = array(
+								'ID' => $skuProperty['ID'],
+								'SHOW_MODE' => $skuProperty['SHOW_MODE'],
+								'VALUES' => $skuProperty['VALUES'],
+								'VALUES_COUNT' => $skuProperty['VALUES_COUNT']
+							);
+						}
+
+						unset($skuProperty, $value);
+
+						if ($item['OFFERS_PROPS_DISPLAY'])
+						{
+							foreach ($item['JS_OFFERS'] as $keyOffer => $jsOffer)
+							{
+								$strProps = '';
+
+								if (!empty($jsOffer['DISPLAY_PROPERTIES']))
+								{
+									foreach ($jsOffer['DISPLAY_PROPERTIES'] as $displayProperty)
+									{
+										$strProps .= '<dt>'.$displayProperty['NAME'].'</dt><dd>'
+											.(is_array($displayProperty['VALUE'])
+												? implode(' / ', $displayProperty['VALUE'])
+												: $displayProperty['VALUE'])
+											.'</dd>';
+									}
+								}
+
+								$item['JS_OFFERS'][$keyOffer]['DISPLAY_PROPERTIES'] = $strProps;
+							}
+							unset($jsOffer, $strProps);
+						}
+					}
+
+					break;
+			}
+		}
+	}?>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="goods">
+    <div class="sale"></div>
+    <div class="goods-inner">
+        <div class="goods-slider">
+            <ul class="slides">
+                <li><img src="images/goods.jpg" alt="" ></li>
+                <li><img src="images/goods.jpg" alt="" ></li>
+            </ul>
+            <a href="ajax.html" class="quick-view various fancybox.ajax" data-fancybox-type="ajax">Быстрый просмотр</a>
+        </div>
+
+        <div class="goods-description">
+            <h3><a href="#">Длинное платье</a></h3>
+
+            <div class="art">Артикул: DSP-55-41t</div>
+
+            <div class="cost">3 890 руб.</div>
+
+            <div class="sizes">
+                <div>размеры:</div>
+
+                <ul>
+                    <li>40</li>
+                    <li class="active">42</li>
+                    <li>44</li>
+                    <li>46</li>
+                    <li>48</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
