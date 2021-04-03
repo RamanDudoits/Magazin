@@ -31,8 +31,7 @@ else
 }
 ?>
 <div class="page-navigation">
-<div class="bx-pagination bx-red">
-    <div class="bx-pagination-container">
+
             <?if($arResult["bDescPageNumbering"] === true):?>
 
                 <?if ($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
@@ -84,15 +83,18 @@ else
 
                 <?if ($arResult["NavPageNomer"] > 1):?>
                     <?if($arResult["bSavePage"]):?>
+
                      <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>"><</a>
                         <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=1"><span>1</span></a>
                     <?else:?>
                         <?if ($arResult["NavPageNomer"] > 2):?>
+
                             <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]-1)?>"><</a>
                         <?else:?>
+
                            <a href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"><</a>
                         <?endif?>
-                       <a href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"><span>1</span></a>
+                       <a href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>">1</a>
                     <?endif?>
                 <?else:?>
                     <a href="<?=$arResult["sUrlPath"]?><?=$strNavQueryStringFull?>"><</a>
@@ -104,16 +106,18 @@ else
                 while($arResult["nStartPage"] <= $arResult["nEndPage"]-1):
                     ?>
                     <?if ($arResult["nStartPage"] == $arResult["NavPageNomer"]):?>
+
                     <span><?=$arResult["nStartPage"]?></span>
                 <?else:?>
-                    <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>"><span><?=$arResult["nStartPage"]?></span></a>
+
+                    <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["nStartPage"]?>"><?=$arResult["nStartPage"]?></a>
                 <?endif?>
                     <?$arResult["nStartPage"]++?>
                 <?endwhile?>
 
                 <?if($arResult["NavPageNomer"] < $arResult["NavPageCount"]):?>
                     <?if($arResult["NavPageCount"] > 1):?>
-                       <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["NavPageCount"]?>"><span><?=$arResult["NavPageCount"]?></span></a>
+                       <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=$arResult["NavPageCount"]?>"><?=$arResult["NavPageCount"]?></a>
                     <?endif?>
                     <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">></a>
                 <?else:?>
@@ -123,9 +127,5 @@ else
                     <a href="<?=$arResult["sUrlPath"]?>?<?=$strNavQueryString?>PAGEN_<?=$arResult["NavNum"]?>=<?=($arResult["NavPageNomer"]+1)?>">></a>
                 <?endif?>
             <?endif?>
-
-        <div style="clear:both"></div>
-    </div>
-</div>
 </div>
 

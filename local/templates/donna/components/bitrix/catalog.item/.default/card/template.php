@@ -27,9 +27,9 @@ use \Bitrix\Main\Localization\Loc;
 ?>
 
 <div class="goods">
-    <? if ($item['LABEL'])
-    {
-        foreach ($item["PROPERTIES"]["LABEL"]["VALUE_XML_ID"] as $key => $value)
+    <?echo 1;?>
+
+      <?  foreach ($item["PROPERTIES"]["LABEL"]["VALUE_XML_ID"] as $key => $value)
         {
             if ($value == "new")
             {
@@ -41,7 +41,7 @@ use \Bitrix\Main\Localization\Loc;
         }
 
         echo $divSaleNew;
-    }?>
+    ?>
 
     <div class="goods-inner">
 

@@ -61,7 +61,6 @@ else
                                     ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
                                 );
                                 unset($sectionListParams);?>
-
                             <div class="filter">
                                         <?
                                             $APPLICATION->IncludeComponent(
@@ -99,7 +98,6 @@ else
                             </div>
                         </div>
                     </div>
-
 
                     <div class="catalog-content">
                         <div class="catalog-top">

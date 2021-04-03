@@ -190,11 +190,11 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
         </div>
         <div class="sort-right">
             <?if ($showTopPager):?>
-            <div data-pagination-num="<?=$navParams['NavNum']?>">
+
                 <!-- pagination-container -->
                 <?=$arResult['NAV_STRING']?>
                 <!-- pagination-container -->
-            </div>
+
             <?endif;?>
         </div>
     </div>
