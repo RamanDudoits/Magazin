@@ -21,6 +21,9 @@ use \Bitrix\Main\Localization\Loc;
  * @var string $buttonSizeClass
  * @var CatalogSectionComponent $component
  */
+
+
+
 ?>
 
 <div class="goods">
@@ -41,25 +44,25 @@ use \Bitrix\Main\Localization\Loc;
     }?>
 
     <div class="goods-inner">
+
+
         <div class="goods-slider">
-
-           <? $newWidth = 70;
-            $newHeight = 107;
-            $renderImage = CFile::ResizeImageGet($item['PREVIEW_PICTURE']['SRC'], Array("width" => $newWidth, "height" => $newHeight));?>
-            <?= CFile::ShowImage($renderImage['src'], $newWidth, $newHeight, "border=0", "", true);?>
-	<a class="product-item-image-wrapper" href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$imgTitle?>"
-			style="background-image: url('<?=$item['PREVIEW_PICTURE']['SRC']?>'); <?=($showSlider ? 'display: none;' : '')?>">
-	</a>
-
+           <?
+            $LINE_ELEMENT_COUNT = 2;
+            if(count($arResult["MORE_PHOTO"])>0):?>
             <ul class="slides">
-                <li><img src="images/goods.jpg" alt="" ></li>
-                <li><img src="images/goods.jpg" alt="" ></li>
+            <?foreach($arResult["MORE_PHOTO"] as $PHOTO):?>
+            <? $file = CFile::ResizeImageGet($PHOTO, array('width'=>228, 'height'=>'339'), BX_RESIZE_IMAGE_EXACT, true);
+            ?>
+
+                <li><a rel="example_group" href="<?=$PHOTO["SRC"]?>" name="more_photo"   title="<?=$arResult["ITEM"]["CODE"]?>">  <img border="0" src="<?=$file["src"]?>" width="<?=$file["width"]?>" height="<?=$file["height"]?>"
+                             alt="<?=$arResult["ITEM"]["NAME"]?>" title="<?=$arResult["ITEM"]["NAME"]?>" /></li></a>
+
+            <?endforeach?>
+
             </ul>
-            <a href="ajax.html" class="quick-view various fancybox.ajax" data-fancybox-type="ajax">Быстрый просмотр</a>
+            <?endif?>
         </div>
-
-
-
 
 
 
@@ -217,43 +220,6 @@ use \Bitrix\Main\Localization\Loc;
 		}
 	}?>
     </div>
-    </div>
-</div>
-
-
-
-
-
-<div class="goods">
-    <div class="sale"></div>
-    <div class="goods-inner">
-        <div class="goods-slider">
-            <ul class="slides">
-                <li><img src="images/goods.jpg" alt="" ></li>
-                <li><img src="images/goods.jpg" alt="" ></li>
-            </ul>
-            <a href="ajax.html" class="quick-view various fancybox.ajax" data-fancybox-type="ajax">Быстрый просмотр</a>
-        </div>
-
-        <div class="goods-description">
-            <h3><a href="#">Длинное платье</a></h3>
-
-            <div class="art">Артикул: DSP-55-41t</div>
-
-            <div class="cost">3 890 руб.</div>
-
-            <div class="sizes">
-                <div>размеры:</div>
-
-                <ul>
-                    <li>40</li>
-                    <li class="active">42</li>
-                    <li>44</li>
-                    <li>46</li>
-                    <li>48</li>
-                </ul>
-            </div>
-        </div>
     </div>
 </div>
 
