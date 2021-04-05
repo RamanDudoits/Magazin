@@ -61,10 +61,9 @@ else
                                     ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
                                 );
                                 unset($sectionListParams);?>
-
                             <div class="filter">
                                         <?
-                                            $APPLICATION->IncludeComponent(
+                                        $intSectionID = $APPLICATION->IncludeComponent(
                                                 "bitrix:catalog.smart.filter",
                                                 "donna_smart_filtre",
                                                 array(
@@ -99,8 +98,7 @@ else
                             </div>
                         </div>
                     </div>
-
-
+<!--                   --><?// echo '<pre>'; print_r($arResult["VARIABLES"]); echo '</pre>';?>
                     <div class="catalog-content">
                         <div class="catalog-top">
 

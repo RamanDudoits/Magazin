@@ -15,10 +15,15 @@ use \Bitrix\Main\Localization\Loc;
  * |	Attention!
  * |	The following comments are for system use
  * |	and are required for the component to work correctly in ajax mode:
- * |	<!-- items-container -->
- * |	<!-- pagination-container -->
- * |	<!-- component-end -->
+ * |
+ * |
+ * |
  */
+
+if (isset($arResult["NAME"]))
+{
+    $APPLICATION->AddChainItem($arResult["NAME"], $arResult["SECTION_PAGE_URL"]);
+}
 
 $this->setFrameMode(true);
 $this->addExternalCss('/bitrix/css/main/bootstrap.css');
@@ -190,11 +195,9 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
         </div>
         <div class="sort-right">
             <?if ($showTopPager):?>
-            <div data-pagination-num="<?=$navParams['NavNum']?>">
                 <!-- pagination-container -->
                 <?=$arResult['NAV_STRING']?>
                 <!-- pagination-container -->
-            </div>
             <?endif;?>
         </div>
     </div>

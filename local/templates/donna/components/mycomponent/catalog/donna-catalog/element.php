@@ -74,6 +74,8 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
             </div>
         </div>
         <div class="catalog-content">
+            <div class="product">
+
 		    <?
             if ($arParams["USE_COMPARE"] === "Y")
             {
@@ -271,6 +273,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
             );
             $GLOBALS['CATALOG_CURRENT_ELEMENT_ID'] = $elementId;
             ?>
+        </div>
         </div>
 
 

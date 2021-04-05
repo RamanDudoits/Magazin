@@ -66,8 +66,6 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
 
             <div class="filter">
                 <?
-                global $arrFilter;
-
 //                if(empty($arResult["VARIABLES"]["SMART_FILTER_PATH"])){
 //                    $re = '/^\/.*\/filter\/(.*)\/apply\//';
 //                    $str = Bitrix\Main\Context::getCurrent()->getRequest()->getRequestedPage();

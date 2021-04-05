@@ -58,50 +58,44 @@ $curPage = explode('/', $APPLICATION->GetCurPage());
         ?>
     </div>
     <div class="side-menu">
-                        <?for ($i = 1;$i <= 2; $i++)
-                            {?>
-                                <ul class="<? echo $arCurView['LIST']; ?>">
-                                        <?foreach ($arResult['SECTIONS'] as &$arSection)
-                                        {
+         <?for ($i = 1;$i <= 2; $i++)
+        {?>
+            <ul class="<? echo $arCurView['LIST']; ?>">
+                    <?foreach ($arResult['SECTIONS'] as &$arSection)
+                    {
 
-                                            $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
-                                            $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
+                        $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
+                        $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 
-                                            if (false === $arSection['PICTURE'])
-                                                $arSection['PICTURE'] = array(
-                                                    'SRC' => $arCurView['EMPTY_IMG'],
-                                                    'ALT' => (
-                                                        '' != $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_ALT"]
-                                                        ? $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_ALT"]
-                                                        : $arSection["NAME"]
-                                                    ),
-                                                    'TITLE' => (
-                                                        '' != $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]
-                                                        ? $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]
-                                                        : $arSection["NAME"]
-                                                    )
-                                                );?>
-                                                <?if(($arSection["CODE"] != "novinki" && $arSection["CODE"] != "sale") && $i == 1){
-                                                    ?><li  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
-                                                        <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
-                                                        ><? echo $arSection['NAME']; ?></a>
-                                                    </li>
-                                                    <?}?>
-                                                <?if(($arSection["CODE"] == "novinki" || $arSection["CODE"] == "sale") && $i == 2){
+                        if (false === $arSection['PICTURE'])
+                            $arSection['PICTURE'] = array(
+                                'SRC' => $arCurView['EMPTY_IMG'],
+                                'ALT' => (
+                                    '' != $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_ALT"]
+                                    ? $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_ALT"]
+                                    : $arSection["NAME"]
+                                ),
+                                'TITLE' => (
+                                    '' != $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]
+                                    ? $arSection["IPROPERTY_VALUES"]["SECTION_PICTURE_FILE_TITLE"]
+                                    : $arSection["NAME"]
+                                )
+                            );?>
+                            <?if(($arSection["CODE"] != "novinki" && $arSection["CODE"] != "sale") && $i == 1){
+                                ?><li  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
+                                    <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
+                                    ><? echo $arSection['NAME']; ?></a>
+                                </li>
+                                <?}?>
+                            <?if(($arSection["CODE"] == "novinki" || $arSection["CODE"] == "sale") && $i == 2){
 
-                                                    ?><li  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
-                                                    <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
-                                                    ><? echo $arSection['NAME']; ?></a>
-                                                    </li>
-                                                <?}?>
-                                      <?}
-                                        unset($arSection);?>
-                                </ul>
+                                ?><li  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
+                                <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
+                                ><? echo $arSection['NAME']; ?></a>
+                                </li>
                             <?}?>
+                  <?}
+                    unset($arSection);?>
+            </ul>
+        <?}?>
     </div>
-
-
-
-            <?if($sectionName == "catalog-donna"):?>
-
-            <?endif;?>
