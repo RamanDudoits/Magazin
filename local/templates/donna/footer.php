@@ -81,8 +81,6 @@
               <form action="" method="post">
                 <fieldset>
                   <div class="subscribe">
-    <!--                <input type="text" name="subscribe-input" placeholder="Подпишитесь на новости" value="" />-->
-    <!--                <input type="submit" name="submit" value="" />-->
                       <?$APPLICATION->IncludeComponent(
                             "bitrix:sender.subscribe",
                             "subscribe",

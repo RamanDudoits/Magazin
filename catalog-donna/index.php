@@ -278,13 +278,6 @@ $APPLICATION->SetTitle("Каталог");?>
 	false
 );
 
-    $APPLICATION->IncludeComponent(
-        "bitrix:main.include",
-        "",
-        array(
-            "AREA_FILE_SHOW" => "file",
-            "PATH" => SITE_DIR."include/donna/wholesale_dresses.php"),
-        false
-    );
+
 
 ?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

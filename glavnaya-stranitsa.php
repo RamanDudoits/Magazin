@@ -75,41 +75,8 @@ $APPLICATION->SetTitle("Главная страница");
 	false
 );?>
 
-    <?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.section.list", 
-	"sale.new.item", 
-	array(
-		"ADD_SECTIONS_CHAIN" => "Y",
-		"CACHE_FILTER" => "N",
-		"CACHE_GROUPS" => "Y",
-		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "A",
-		"COUNT_ELEMENTS" => "N",
-		"COUNT_ELEMENTS_FILTER" => "CNT_ACTIVE",
-		"FILTER_NAME" => "sectionsFilter",
-		"IBLOCK_ID" => "9",
-		"IBLOCK_TYPE" => "donna",
-		"SECTION_CODE" => "",
-		"SECTION_FIELDS" => array(
-			0 => "",
-			1 => "",
-		),
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
-		"SECTION_URL" => "#SITE_DIR#/catalog-donna/#CODE#/",
-		"SECTION_USER_FIELDS" => array(
-			0 => "",
-			1 => "",
-		),
-		"SHOW_PARENT_NAME" => "Y",
-		"TOP_DEPTH" => "2",
-		"VIEW_MODE" => "TILE",
-		"COMPONENT_TEMPLATE" => "sale.new.item",
-		"HIDE_SECTION_NAME" => "N",
-		"LIST_COLUMNS_COUNT" => "6"
-	),
-	false
-);?>
 
+<!-- start container --><section id="container">
     <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list", 
 	"donna", 
@@ -225,6 +192,6 @@ $APPLICATION->SetTitle("Главная страница");
             "PATH" => SITE_DIR."include/donna/gallery.php"),
         false
     );?>
-
+</section>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
 

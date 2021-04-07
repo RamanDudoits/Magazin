@@ -36,4 +36,6 @@ $MESS["CT_BCE_CATALOG_RATIO_PRICE"] = "цена за #RATIO#";
 $MESS["CT_BCE_CATALOG_GIFT_BLOCK_TITLE_DEFAULT"] = "Выберите один из подарков к этому товару";
 $MESS["CT_BCE_CATALOG_GIFTS_MAIN_BLOCK_TITLE_DEFAULT"] = "Выберите один из товаров, чтобы получить подарок";
 $MESS["SHARE_FRIENDS"] = "Рассказать друзьям:";
+$MESS["AMOUNT_PRODUCT"] = "Количество:";
+$MESS["PRODUCT_DESCRIPTION"] = "Описание товара:";
 ?>

@@ -98,7 +98,6 @@ else
                             </div>
                         </div>
                     </div>
-<!--                   --><?// echo '<pre>'; print_r($arResult["VARIABLES"]); echo '</pre>';?>
                     <div class="catalog-content">
                         <div class="catalog-top">
 
@@ -279,4 +278,13 @@ else
         </div>
     <? endif;?>
 </div>
+
+<? $APPLICATION->IncludeComponent(
+    "bitrix:main.include",
+    "",
+    array(
+        "AREA_FILE_SHOW" => "file",
+        "PATH" => SITE_DIR."include/donna/wholesale_dresses.php"),
+    false
+);?>
 
