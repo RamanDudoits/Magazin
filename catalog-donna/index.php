@@ -273,6 +273,7 @@ $APPLICATION->SetTitle("Каталог");?>
 			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 			"compare" => "compare/",
 			"smart_filter" => "#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
+			"root_smart_filter" => "filter/#SMART_FILTER_PATH#/apply/",
 		)
 	),
 	false
