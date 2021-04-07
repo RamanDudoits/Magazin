@@ -223,16 +223,23 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                 <!--Close Props-->
                 <div class="product-color">
                     <div class="haracther"><span>Выберите цвет:</span></div>
-
                     <div class="images-color">
-                        <span class="active"><img src="images/col-1.png" alt="" ></span>
-                        <span><img src="images/col-2.png" alt="" ></span>
+                        <?
+                        foreach ($arResult["SNAP_ELEMENT"]["PIC"] as $key => $PHOTO)
+                        {
+                            $file = CFile::ResizeImageGet($PHOTO, array('width'=>69, 'height'=>'105'), BX_RESIZE_IMAGE_EXACT, true);?>
+                            <span><a class="" href="<?=$arResult["SNAP_ELEMENT"]["URL"][$key]?>" >
+                                <img border="0" src="<?=$file["src"]?>" width="<?=$file["width"]?>"
+                                     height="<?=$file["height"]?>"
+                                     alt="<?=$arResult["SNAP_ELEMENT"]["NAME"][$key]?>"
+                                     title="<?=$arResult["SNAP_ELEMENT"]["NAME"][$key]?>"
+                                />
+                                </a></span>
+                        <?}?>
                     </div>
                 </div>
 
                 <div class="sizes-count">
-
-
                     <div id="<?=$itemIds['TREE_ID']?>">
                         <div class="sizes-left">
                             <?
@@ -251,64 +258,75 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                 ?>
                                 <div class="product-item-detail-info-container" data-entity="sku-line-block">
                                     <div class="product-item-detail-info-container-title"><?=htmlspecialcharsEx($skuProperty['NAME'])?></div>
-                                    <div class="product-item-scu-container">
-                                        <div class="product-item-scu-block">
-                                            <div class="product-item-scu-list">
-                                                <ul class="product-item-scu-item-list">
-                                                    <?
-                                                    foreach ($skuProperty['VALUES'] as &$value)
-                                                    {
-                                                        $value['NAME'] = htmlspecialcharsbx($value['NAME']);
+                                    <ul class="product-item-scu-item-list">
+                                        <?
+                                        foreach ($skuProperty['VALUES'] as &$value)
+                                        {
+                                            $value['NAME'] = htmlspecialcharsbx($value['NAME']);
 
-                                                        ?>
-                                                        <li class="product-item-scu-item-text-container" title="<?=$value['NAME']?>"
-                                                            data-treevalue="<?=$propertyId?>_<?=$value['ID']?>"
-                                                            data-onevalue="<?=$value['ID']?>">
-                                                                <?=$value['NAME']?>
-                                                        </li>
-                                                        <?
+                                            ?>
+                                            <li class="product-item-scu-item-text-container" title="<?=$value['NAME']?>"
+                                                data-treevalue="<?=$propertyId?>_<?=$value['ID']?>"
+                                                data-onevalue="<?=$value['ID']?>">
+                                                    <?=$value['NAME']?>
+                                            </li>
+                                            <?
 
-                                                    }
-                                                    ?>
-                                                </ul>
-                                                <div style="clear: both;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        }
+                                        ?>
+                                    </ul>
                                 </div>
-                                <?
-                            }
-                            ?>
+                                <?}?>
                             <a href="#">Определите свой размер</a>
                         </div>
                     </div>
+
                     <div class="count">
                         <div class="haracther"><span><?=GetMessage("AMOUNT_PRODUCT")?></span></div>
 
                         <div class="quantity">
-                            <span class="minus" id="<?=$itemIds['QUANTITY_DOWN_ID']?>">-</span>
-                            <input  id="<?=$itemIds['QUANTITY_ID']?>" type="number"
+                            <div class="minus" >-</div>
+                            <input id="<?=$itemIds['QUANTITY_ID']?>" type="text"
                                    value="<?=$price['MIN_QUANTITY']?>">
-                            <span class="plus" id="<?=$itemIds['QUANTITY_UP_ID']?>">+</span>
+                            <div class="plus">+</div>
                         </div>
                      </div>
 
-                    <div id="<?=$itemIds['BASKET_ACTIONS_ID']?>" style="display: <?=($actualItem['CAN_BUY'] ? '' : 'none')?>;">
-                        <a class="add-bag <?=$buyButtonClassName?> product-item-detail-buy-button" id="<?=$itemIds['BUY_LINK']?>"
-                           href="javascript:void(0);">
-                            <span><?=$arParams['MESS_BTN_BUY']?></span>
-                        </a>
-                    </div>
+            </div>
+                <div id="<?=$itemIds['BASKET_ACTIONS_ID']?>" style="display: <?=($actualItem['CAN_BUY'] ? '' : 'none')?>;">
+                    <a class="add-bag <?=$buyButtonClassName?> product-item-detail-buy-button" id="<?=$itemIds['BUY_LINK']?>"
+                       href="javascript:void(0);">
+                        <span><?=$arParams['MESS_BTN_BUY']?></span>
+                    </a>
+                </div>
 
+                <div class="buy-one-click-insert" id="buy-one-click-insert"></div>
 
+                <div class="cusrousel-mini">
+                        <?
+                        if(count($arResult["MORE_PHOTO_ELEMENT"])>0):?>
+                                <?foreach($arResult["MORE_PHOTO_ELEMENT"] as $PHOTO):?>
+                                    <? $file = CFile::ResizeImageGet($PHOTO, array('width'=>78, 'height'=>'119'), BX_RESIZE_IMAGE_EXACT, true);?>
+                                    <div class="mini-slide">
+                                        <a class="" href="<?=$PHOTO["SRC"]?>" name="more_photo"   title="<?=$arResult["ITEM"]["CODE"]?>">
+                                            <img border="0" src="<?=$file["src"]?>" width="<?=$file["width"]?>" height="<?=$file["height"]?>"
+                                                 alt="<?=$arResult["NAME"]?>" title="<?=$arResult["NAME"]?>" />
+                                        </a>
+                                    </div>
+                                <?endforeach?>
+                        <?endif?>
+                </div>
+
+                <div class="product-description">
+                    <h4><?=GetMessage("PRODUCT_DESCRIPTION")?></h4>
+                    <p><?=$arResult["PROPERTIES"]["PRODUCT_DESCRIPTION"]["DEFAULT_VALUE"]["TEXT"]?></p>
+                </div>
             </div>
 
 
-               <? echo '<pre>'; print_r($itemIds['BIG_SLIDER_ID']); echo '</pre>';?>
 
 
-
-                    <div class="product-item-detail-slider-container" id="<?=$itemIds['BIG_SLIDER_ID']?>">
+                <div class="product-item-detail-slider-container" id="<?=$itemIds['BIG_SLIDER_ID']?>">
                         <div class="product-item-detail-slider-images-container" data-entity="images-container">
                         </div>
                     </div>
@@ -559,26 +577,11 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     ?>
                 </div>
             </div>
-        </div>
+
         <!--Small Card-->
 
         <!--Top tabs-->
-        <div class="product-item-detail-tabs-container-fixed hidden-xs" id="<?=$itemIds['TABS_PANEL_ID']?>">
-            <ul class="product-item-detail-tabs-list">
-                <?
-                if (!empty($arResult['DISPLAY_PROPERTIES']) || $arResult['SHOW_OFFERS_PROPS'])
-                {
-                    ?>
-                    <li class="product-item-detail-tab" data-entity="tab" data-value="properties">
-                        <a href="javascript:void(0);" class="product-item-detail-tab-link">
-                            <span><?=$arParams['MESS_PROPERTIES_TAB']?></span>
-                        </a>
-                    </li>
-                    <?
-                }
-                ?>
-            </ul>
-        </div>
+
 
         <meta itemprop="name" content="<?=$name?>" />
         <meta itemprop="category" content="<?=$arResult['CATEGORY_PATH']?>" />
@@ -973,6 +976,10 @@ if ($arParams['DISPLAY_COMPARE'])
         });
 
         var <?=$obName?> = new JCCatalogElement(<?=CUtil::PhpToJSObject($jsParams, false, true)?>);
+    </script>
+    <script>
+        var input = document.querySelector('[name=<?=$arResult["ORIGINAL_PARAMETERS"]["SECTION_CODE"]?>]');
+        input.setAttribute('class', 'current')
     </script>
 <?
 Bitrix\Main\Page\Asset::getInstance()->addJs('//yastatic.net/es5-shims/0.0.2/es5-shims.min.js');

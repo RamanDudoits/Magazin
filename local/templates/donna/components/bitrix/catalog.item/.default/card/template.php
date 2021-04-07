@@ -34,35 +34,37 @@ use \Bitrix\Main\Localization\Loc;
 
         echo $divSaleNew;
     ?>
-
     <div class="goods-inner">
-
         <div class="goods-slider">
-            <?
-            $LINE_ELEMENT_COUNT = 2;
+           <?
             if(count($arResult["MORE_PHOTO"])>0):?>
-                <ul class="slides">
-                    <?foreach($arResult["MORE_PHOTO"] as $PHOTO):?>
-                        <? $file = CFile::ResizeImageGet($PHOTO, array('width'=>228, 'height'=>'339'), BX_RESIZE_IMAGE_EXACT, true);
-                        ?>
-                        <li><a rel="example_group" href="<?=$arResult["ITEM"]["DETAIL_PAGE_URL"]?>" name="more_photo"   title="<?=$arResult["ITEM"]["CODE"]?>">
-                                <img border="0" src="<?=$file["src"]?>" width="<?=$file["width"]?>" height="<?=$file["height"]?>"
-                                     alt="<?=$arResult["ITEM"]["NAME"]?>" title="<?=$arResult["ITEM"]["NAME"]?>" /></li></a>
-                    <?endforeach?>
-                </ul>
+            <ul class="slides">
+            <?foreach($arResult["MORE_PHOTO"] as $PHOTO):?>
+            <? $file = CFile::ResizeImageGet($PHOTO, array('width'=>228, 'height'=>'339'), BX_RESIZE_IMAGE_EXACT, true);
+            ?>
+                <li><a rel="example_group" href="<?=$arResult["ITEM"]["DETAIL_PAGE_URL"]?>" name="more_photo"   title="<?=$arResult["ITEM"]["CODE"]?>">
+                        <img border="0" src="<?=$file["src"]?>" width="<?=$file["width"]?>" height="<?=$file["height"]?>"
+                             alt="<?=$arResult["ITEM"]["NAME"]?>" title="<?=$arResult["ITEM"]["NAME"]?>" />
+                    </a>
+                </li>
+
+            <?endforeach?>
+
+            </ul>
             <?endif?>
         </div>
-        <div class="goods-description">
-            <h3><a href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$productTitle?>"><?=$productTitle?></a></h3>
-            <?
-            if (!empty($arParams['PRODUCT_BLOCKS_ORDER']))
-            {
-                foreach ($arParams['PRODUCT_BLOCKS_ORDER'] as $blockName)
-                {
-                    switch ($blockName)
-                    {
-                        case 'price': ?>
-                            <div class="cost">
+    <div class="goods-description">
+        <h3><a href="<?=$item['DETAIL_PAGE_URL']?>" title="<?=$productTitle?>"><?=$productTitle?></a></h3>
+	<?
+	if (!empty($arParams['PRODUCT_BLOCKS_ORDER']))
+	{
+		foreach ($arParams['PRODUCT_BLOCKS_ORDER'] as $blockName)
+		{
+			switch ($blockName)
+			{
+				case 'price': ?>
+
+                    <div class="cost">
 						<span class="product-item-price-current" id="<?=$itemIds['PRICE']?>">
 							<?
                             if (!empty($price))
@@ -191,3 +193,4 @@ use \Bitrix\Main\Localization\Loc;
         </div>
     </div>
 </div>
+

@@ -58,8 +58,8 @@ $curPage = explode('/', $APPLICATION->GetCurPage());
         ?>
     </div>
     <div class="side-menu">
-         <?for ($i = 1;$i <= 2; $i++)
-        {?>
+        <?for ($i = 1;$i <= 2; $i++)
+            {?>
             <ul class="<? echo $arCurView['LIST']; ?>">
                     <?foreach ($arResult['SECTIONS'] as &$arSection)
                     {
@@ -82,14 +82,14 @@ $curPage = explode('/', $APPLICATION->GetCurPage());
                                 )
                             );?>
                             <?if(($arSection["CODE"] != "novinki" && $arSection["CODE"] != "sale") && $i == 1){
-                                ?><li  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
+                                ?><li name="<?=$arSection['CODE']?>"  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
                                     <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
-                                    ><? echo $arSection['NAME']; ?></a>
+                                    id="<?=$arSection['CODE']?>"><? echo $arSection['NAME']; ?></a>
                                 </li>
                                 <?}?>
                             <?if(($arSection["CODE"] == "novinki" || $arSection["CODE"] == "sale") && $i == 2){
 
-                                ?><li  id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
+                                ?><li name="<?=$arSection['CODE']?>" id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
                                 <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>"
                                 ><? echo $arSection['NAME']; ?></a>
                                 </li>

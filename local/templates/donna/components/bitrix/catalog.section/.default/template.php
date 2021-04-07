@@ -19,7 +19,6 @@ use \Bitrix\Main\Localization\Loc;
  * |
  * |
  */
-
 if (isset($arResult["NAME"]))
 {
     $APPLICATION->AddChainItem($arResult["NAME"], $arResult["SECTION_PAGE_URL"]);
@@ -342,4 +341,9 @@ $signedParams = $signer->sign(base64_encode(serialize($arResult['ORIGINAL_PARAME
         container: '<?=$containerName?>'
     });
 </script>
+<script>
+    var input = document.querySelector('[name=<?=$arResult["ORIGINAL_PARAMETERS"]["SECTION_CODE"]?>]');
+    input.setAttribute('class', 'current')
+</script>
+
 <!-- component-end -->
