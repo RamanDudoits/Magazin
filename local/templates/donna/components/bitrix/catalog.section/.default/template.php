@@ -260,8 +260,23 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
         ?>
         <!-- items-container -->
     </div>
-        <?
-    }
+
+        <div class="sort last">
+            <div class="sort-left">
+                <a href="<?=$APPLICATION->GetCurPage();?>" class="down"><?=GetMessage("UP_BUTTON")?></a>
+            </div>
+            <div class="sort-right">
+                <?if ($showBottomPager)
+                {?>
+                        <!-- pagination-container -->
+                        <?=$arResult['NAV_STRING']?>
+                        <!-- pagination-container -->
+                    </div>
+            <?}?>
+            </div>
+        </div>
+
+    <?}
     else
     {
         // load css for bigData/deferred load
@@ -274,7 +289,7 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
         );
     }
     ?>
-</div>
+
 <?
 if ($showLazyLoad)
 {
@@ -284,17 +299,6 @@ if ($showLazyLoad)
              data-use="show-more-<?=$navParams['NavNum']?>">
             <?=$arParams['MESS_BTN_LAZY_LOAD']?>
         </div>
-    </div>
-    <?
-}
-
-if ($showBottomPager)
-{
-    ?>
-    <div data-pagination-num="<?=$navParams['NavNum']?>">
-        <!-- pagination-container -->
-        <?=$arResult['NAV_STRING']?>
-        <!-- pagination-container -->
     </div>
     <?
 }

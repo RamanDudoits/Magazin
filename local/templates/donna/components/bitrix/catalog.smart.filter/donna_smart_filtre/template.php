@@ -540,7 +540,7 @@ $this->setFrameMode(true);
                                 $( ".max-price" ).val(ui.values[ 1 ]);
                                 $( ".range-min" ).text(ui.values[ 0 ]);
                                 $( ".range-max" ).text(ui.values[ 1 ]);
-                                smartFilter.keyup(BX("<?echo $arItem["VALUES"]["MIN"]["CONTROL_ID"]?>"));
+                                smartFilter.keyup(BX());
                             }
                         });
                         $( ".min-price" ).val($( "#slider-range" ).slider( "values", 0 ));
@@ -593,20 +593,13 @@ $this->setFrameMode(true);
                     window['trackBar<?=$key?>'] = new BX.Iblock.SmartFilter(<?=CUtil::PhpToJSObject($arJsParams)?>);
                 });
             </script>
-
-
             <?endif;
 				}?>
-
             <div class="filter-wrap">
-                            <input
-                                    class="choose"
-                                    type="submit"
-                                    id="set_filter"
-                                    name="set_filter"
-                                    value="<?=GetMessage("CT_BCSF_SET_FILTER")?>"
-                            />
-
+                <a href="javascript:void(0);" class="choose"
+                   type="submit"
+                   id="set_filter"
+                   name="set_filter"><?=GetMessage("CT_BCSF_SET_FILTER")?></a>
                             <div class="bx-filter-popup-result <?if ($arParams["FILTER_VIEW_MODE"] == "VERTICAL") echo $arParams["POPUP_POSITION"]?>" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?> style="display: inline-block;">
                                 <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
                                 <span class="arrow"></span>

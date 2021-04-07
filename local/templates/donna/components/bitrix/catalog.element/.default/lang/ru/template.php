@@ -38,4 +38,5 @@ $MESS["CT_BCE_CATALOG_GIFTS_MAIN_BLOCK_TITLE_DEFAULT"] = "Выберите од�
 $MESS["SHARE_FRIENDS"] = "Рассказать друзьям:";
 $MESS["AMOUNT_PRODUCT"] = "Количество:";
 $MESS["PRODUCT_DESCRIPTION"] = "Описание товара:";
+$MESS["СHOOSE_COLOR"] = "Выберите цвет:";
 ?>

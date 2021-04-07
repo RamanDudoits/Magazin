@@ -31,9 +31,6 @@ else
 
 $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEBAR_PATH']));
 ?>
-<div class='row'>
-	<div class='<?=($isSidebar ? 'col-md-9 col-sm-8' : 'col-xs-12')?>'>
-
         <div class="sidebar-left">
             <div class="drop-wrap">
 
@@ -276,10 +273,6 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
         </div>
         </div>
 
-
-
-
-	</div>
 	<? if ($isSidebar): ?>
 		<div class='col-md-3 col-sm-4'>
 			<?
@@ -298,5 +291,4 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 			?>
 		</div>
 	<? endif ?>
-</div>
 </div>

@@ -205,6 +205,7 @@ $APPLICATION->SetTitle("");
 		"PAGE_ELEMENT_COUNT" => "15",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
+			0 => "BASE",
 		),
 		"PRICE_VAT_INCLUDE" => "Y",
 		"PRICE_VAT_SHOW_VALUE" => "N",

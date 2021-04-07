@@ -113,28 +113,28 @@ Asset::getInstance()->addJs('https://code.jquery.com/ui/1.12.1/jquery-ui.js');
         <div class="acount-info">
                 <div class="bag">
                     <?$APPLICATION->IncludeComponent(
-            "bitrix:sale.basket.basket.line",
-            ".default",
-            array(
-                "HIDE_ON_BASKET_PAGES" => "Y",
-                "PATH_TO_AUTHORIZE" => "",
-                "PATH_TO_BASKET" => SITE_DIR."personal/cart/",
-                "PATH_TO_ORDER" => SITE_DIR."personal/order/make/",
-                "PATH_TO_PERSONAL" => SITE_DIR."personal/",
-                "PATH_TO_PROFILE" => SITE_DIR."personal/",
-                "PATH_TO_REGISTER" => SITE_DIR."login/",
-                "POSITION_FIXED" => "N",
-                "SHOW_AUTHOR" => "Y",
-                "SHOW_EMPTY_VALUES" => "Y",
-                "SHOW_NUM_PRODUCTS" => "Y",
-                "SHOW_PERSONAL_LINK" => "N",
-                "SHOW_PRODUCTS" => "N",
-                "SHOW_REGISTRATION" => "Y",
-                "SHOW_TOTAL_PRICE" => "N",
-                "COMPONENT_TEMPLATE" => ".default"
-            ),
-            false
-        );?>
+	"bitrix:sale.basket.basket.line", 
+	".default", 
+	array(
+		"HIDE_ON_BASKET_PAGES" => "Y",
+		"PATH_TO_AUTHORIZE" => "",
+		"PATH_TO_BASKET" => SITE_DIR."personal/cart/",
+		"PATH_TO_ORDER" => SITE_DIR."personal/order/make/",
+		"PATH_TO_PERSONAL" => SITE_DIR."personal/",
+		"PATH_TO_PROFILE" => SITE_DIR."personal/",
+		"PATH_TO_REGISTER" => SITE_DIR."login/",
+		"POSITION_FIXED" => "N",
+		"SHOW_AUTHOR" => "Y",
+		"SHOW_EMPTY_VALUES" => "Y",
+		"SHOW_NUM_PRODUCTS" => "Y",
+		"SHOW_PERSONAL_LINK" => "N",
+		"SHOW_PRODUCTS" => "N",
+		"SHOW_REGISTRATION" => "Y",
+		"SHOW_TOTAL_PRICE" => "Y",
+		"COMPONENT_TEMPLATE" => ".default"
+	),
+	false
+);?>
                 </div>
             </div>
     </div>

@@ -66,7 +66,7 @@ $APPLICATION->SetTitle("Каталог");?>
 		"DETAIL_USE_COMMENTS" => "N",
 		"DETAIL_USE_VOTE_RATING" => "N",
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
-		"DISPLAY_BOTTOM_PAGER" => "N",
+		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_TOP_PAGER" => "Y",
 		"ELEMENT_SORT_FIELD" => "timestamp_x",
 		"ELEMENT_SORT_FIELD2" => "timestamp_x",
