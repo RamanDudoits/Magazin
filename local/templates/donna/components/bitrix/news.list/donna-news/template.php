@@ -41,8 +41,7 @@ $this->setFrameMode(true);
                 <span class="news-date-time"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></span>
             </div>
             <h3><a href="<?echo $arItem["DETAIL_PAGE_URL"]?>"><?echo $arItem["NAME"]?></a></h3>
-            <p>
-                <?echo $arItem["PREVIEW_TEXT"];?>        </p>
+            <p><?echo $arItem["PREVIEW_TEXT"];?></p>
             <a class="more" href="#"><? echo GetMessage("MORE_DETAILS")?></a>
         </div>
     </div>
