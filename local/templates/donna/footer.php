@@ -78,36 +78,27 @@
             </div>
             <div class="subscribe-section">
               <!-- start form -->
-              <form action="" method="post">
-                <fieldset>
-                  <div class="subscribe">
-                      <?$APPLICATION->IncludeComponent(
-                            "bitrix:sender.subscribe",
-                            "subscribe",
-                            array(
-                                "SET_TITLE" => "N",
-                                "COMPONENT_TEMPLATE" => "subscribe",
-                                "USE_PERSONALIZATION" => "Y",
-                                "CONFIRMATION" => "N",
-                                "HIDE_MAILINGS" => "Y",
-                                "SHOW_HIDDEN" => "N",
-                                "USER_CONSENT" => "N",
-                                "USER_CONSENT_ID" => "0",
-                                "USER_CONSENT_IS_CHECKED" => "Y",
-                                "USER_CONSENT_IS_LOADED" => "N",
-                                "AJAX_MODE" => "N",
-                                "AJAX_OPTION_JUMP" => "N",
-                                "AJAX_OPTION_STYLE" => "Y",
-                                "AJAX_OPTION_HISTORY" => "N",
-                                "AJAX_OPTION_ADDITIONAL" => "",
-                                "CACHE_TYPE" => "A",
-                                "CACHE_TIME" => "3600"
-                            ),
-                            false
-                        );?>
-                  </div>
-                </fieldset>
-              </form>
+                <?$APPLICATION->IncludeComponent("bitrix:sender.subscribe", "donna-subscribe", Array(
+                    "AJAX_MODE" => "N",	// Включить режим AJAX
+                    "AJAX_OPTION_ADDITIONAL" => "",	// Дополнительный идентификатор
+                    "AJAX_OPTION_HISTORY" => "N",	// Включить эмуляцию навигации браузера
+                    "AJAX_OPTION_JUMP" => "N",	// Включить прокрутку к началу компонента
+                    "AJAX_OPTION_STYLE" => "Y",	// Включить подгрузку стилей
+                    "CACHE_TIME" => "3600",	// Время кеширования (сек.)
+                    "CACHE_TYPE" => "A",	// Тип кеширования
+                    "CONFIRMATION" => "N",	// Запрашивать подтверждение подписки по email
+                    "HIDE_MAILINGS" => "Y",	// Скрыть список рассылок, и подписывать на все
+                    "SET_TITLE" => "N",	// Устанавливать заголовок страницы
+                    "SHOW_HIDDEN" => "N",	// Показать скрытые рассылки для подписки
+                    "USER_CONSENT" => "N",	// Запрашивать согласие
+                    "USER_CONSENT_ID" => "0",	// Соглашение
+                    "USER_CONSENT_IS_CHECKED" => "Y",	// Галка по умолчанию проставлена
+                    "USER_CONSENT_IS_LOADED" => "N",	// Загружать текст сразу
+                    "USE_PERSONALIZATION" => "Y",	// Определять подписку текущего пользователя
+                    "COMPONENT_TEMPLATE" => ".default"
+                ),
+                    false
+                );?>
               <!-- end of form -->
             </div>
         </div>
@@ -122,9 +113,7 @@
     </div>
 	</footer>
 	<!-- end of footer -->
-
 </section>
 <!-- end of wrapper -->
-
 </body>
 </html>
