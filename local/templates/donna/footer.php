@@ -57,25 +57,19 @@
             );?>
         </div>
         <div class="social">
-            <h3>Социальные сети</h3>
-            <div class="icons">
-                <?$APPLICATION->IncludeComponent(
-                    "mycomponent:eshop.socnet.links",
-                    "social",
-                    array(
-                        "FACEBOOK" => "https://www.facebook.com/1CBitrix",
-                        "VKONTAKTE" => "https://vk.com/bitrix_1c",
-                        "INSTAGRAM" => "https://instagram.com/1CBitrix/",
+                <?$APPLICATION->IncludeComponent("bitrix:eshop.socnet.links", "social", Array(
+                    "FACEBOOK" => "https://www.facebook.com/1CBitrix",	// Ссылку на страницу в Facebook
+                        "VKONTAKTE" => "https://vk.com/bitrix_1c",	// Ссылку на страницу в Vkontakte
+                        "INSTAGRAM" => "https://instagram.com/1CBitrix/",	// Ссылку на страницу в Instagram
                         "COMPONENT_TEMPLATE" => "social",
-                        "TWITTER" => "",
-                        "GOOGLE" => ""
+                        "TWITTER" => "",	// Ссылку на страницу в Twitter
+                        "GOOGLE" => "",	// Ссылку на страницу в Google
                     ),
                     false,
                     array(
-                        "HIDE_ICONS" => "N"
+                    "HIDE_ICONS" => "N"
                     )
                 );?>
-            </div>
             <div class="subscribe-section">
               <!-- start form -->
                 <?$APPLICATION->IncludeComponent("bitrix:sender.subscribe", "donna-subscribe", Array(
