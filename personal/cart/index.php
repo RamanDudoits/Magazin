@@ -2,8 +2,11 @@
 define("HIDE_SIDEBAR", true);
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Корзина");
-?><?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket", "basket", Array(
-	"COUNT_DISCOUNT_4_ALL_QUANTITY" => "N",
+?><?$APPLICATION->IncludeComponent(
+	"bitrix:sale.basket.basket", 
+	"basket", 
+	array(
+		"COUNT_DISCOUNT_4_ALL_QUANTITY" => "N",
 		"COLUMNS_LIST" => array(
 			0 => "NAME",
 			1 => "DISCOUNT",
@@ -18,18 +21,79 @@ $APPLICATION->SetTitle("Корзина");
 		"AJAX_OPTION_JUMP" => "N",
 		"AJAX_OPTION_STYLE" => "Y",
 		"AJAX_OPTION_HISTORY" => "N",
-		"PATH_TO_ORDER" => "/personal/order/make/",	// Страница оформления заказа
-		"HIDE_COUPON" => "N",	// Спрятать поле ввода купона
-		"QUANTITY_FLOAT" => "N",	// Использовать дробное значение количества
-		"PRICE_VAT_SHOW_VALUE" => "Y",	// Отображать значение НДС
-		"TEMPLATE_THEME" => "site",	// Цветовая тема
-		"SET_TITLE" => "Y",	// Устанавливать заголовок страницы
+		"PATH_TO_ORDER" => "/personal/order/make/",
+		"HIDE_COUPON" => "N",
+		"QUANTITY_FLOAT" => "N",
+		"PRICE_VAT_SHOW_VALUE" => "Y",
+		"TEMPLATE_THEME" => "site",
+		"SET_TITLE" => "Y",
 		"AJAX_OPTION_ADDITIONAL" => "",
 		"OFFERS_PROPS" => array(
 			0 => "SIZES_SHOES",
 			1 => "SIZES_CLOTHES",
 			2 => "COLOR_REF",
-		)
+		),
+		"COMPONENT_TEMPLATE" => "basket",
+		"DEFERRED_REFRESH" => "N",
+		"USE_DYNAMIC_SCROLL" => "Y",
+		"SHOW_FILTER" => "Y",
+		"SHOW_RESTORE" => "Y",
+		"COLUMNS_LIST_EXT" => array(
+			0 => "PREVIEW_PICTURE",
+			1 => "DISCOUNT",
+			2 => "DELETE",
+			3 => "DELAY",
+			4 => "TYPE",
+			5 => "SUM",
+		),
+		"COLUMNS_LIST_MOBILE" => array(
+			0 => "PREVIEW_PICTURE",
+			1 => "DISCOUNT",
+			2 => "DELETE",
+			3 => "DELAY",
+			4 => "TYPE",
+			5 => "SUM",
+		),
+		"TOTAL_BLOCK_DISPLAY" => array(
+			0 => "bottom",
+		),
+		"DISPLAY_MODE" => "extended",
+		"PRICE_DISPLAY_MODE" => "Y",
+		"SHOW_DISCOUNT_PERCENT" => "N",
+		"PRODUCT_BLOCKS_ORDER" => "props,sku,columns",
+		"USE_PRICE_ANIMATION" => "Y",
+		"LABEL_PROP" => array(
+		),
+		"USE_PREPAYMENT" => "N",
+		"CORRECT_RATIO" => "Y",
+		"AUTO_CALCULATION" => "Y",
+		"ACTION_VARIABLE" => "basketAction",
+		"COMPATIBLE_MODE" => "Y",
+		"EMPTY_BASKET_HINT_PATH" => "/",
+		"ADDITIONAL_PICT_PROP_2" => "-",
+		"ADDITIONAL_PICT_PROP_3" => "-",
+		"ADDITIONAL_PICT_PROP_9" => "-",
+		"ADDITIONAL_PICT_PROP_10" => "-",
+		"ADDITIONAL_PICT_PROP_11" => "-",
+		"BASKET_IMAGES_SCALING" => "adaptive",
+		"USE_GIFTS" => "N",
+		"USE_ENHANCED_ECOMMERCE" => "N"
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+<?$APPLICATION->IncludeComponent(
+	"opensource:order", 
+	".default", 
+	array(
+		"COMPONENT_TEMPLATE" => ".default",
+		"DEFAULT_PERSON_TYPE_ID" => "1",
+		"DEFAULT_DELIVERY_ID" => "1",
+		"DEFAULT_PAY_SYSTEM_ID" => "1",
+		"PATH_TO_BASKET" => "/personal/cart/"
+	),
+	false
+);?>
+
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
