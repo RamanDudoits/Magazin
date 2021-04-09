@@ -39,6 +39,10 @@ ul.left-menu li a.selected:hover
 {
 	color:#FC8D3D;
 }
+#navi li a.active {
+	background: #f6f6f6;
+	color: #d21112;
+}
 
 
 
