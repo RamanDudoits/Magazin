@@ -15,7 +15,7 @@ $APPLICATION->SetTitle("Каталог");?>
 );?>
 
 <?$APPLICATION->IncludeComponent(
-	"mycomponent:catalog", 
+	"bitrix:catalog",
 	"donna-catalog", 
 	array(
 		"ACTION_VARIABLE" => "action",
@@ -272,13 +272,11 @@ $APPLICATION->SetTitle("Каталог");?>
 			"section" => "#SECTION_CODE#/",
 			"element" => "#SECTION_CODE#/#ELEMENT_CODE#/",
 			"compare" => "compare/",
-			"smart_filter" => "#SECTION_CODE#/f/#SMART_FILTER_PATH#/",
-			"root_smart_filter" => "f/#SMART_FILTER_PATH#/",
+			"smart_filter" => "#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
+			"root_smart_filter" => "#SMART_FILTER_PATH#/",
 		)
 	),
 	false
 );
-
-
 
 ?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

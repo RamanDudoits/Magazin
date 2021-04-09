@@ -29,7 +29,7 @@ Asset::getInstance()->addJs('https://code.jquery.com/ui/1.12.1/jquery-ui.js');
   <header id="header">
     <div class="inner">
         <div id="logo">
-            <a href="<?=SITE_DIR . "glavnaya-stranitsa.php";?>" title="Site name"><!-- logo should be used as background --></a>
+            <a href="<?=SITE_DIR;?>" title="Site name"><!-- logo should be used as background --></a>
         </div>
         <div class="search-section">
             <!-- start form -->

@@ -90,7 +90,7 @@ if ($sectionListParams["COUNT_ELEMENTS"] === "Y")
                         'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
                         'CURRENCY_ID' => $arParams['CURRENCY_ID'],
                         "SEF_MODE" => $arParams["SEF_MODE"],
-                        "SEF_RULE" => "/catalog-donna/f/#SMART_FILTER_PATH#/",
+                        "SEF_RULE" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["smart_filter"],
                         "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
                         "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
                         "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
