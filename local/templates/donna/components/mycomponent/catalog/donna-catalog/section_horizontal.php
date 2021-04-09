@@ -27,10 +27,7 @@ else
                 <div class="col-xs-12">
                     <div class="sidebar-left">
                         <div class="drop-wrap">
-
-                                <?
-
-                                $sectionListParams = array(
+                                <?$sectionListParams = array(
                                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                                     "CACHE_TYPE" => $arParams["CACHE_TYPE"],
@@ -62,45 +59,43 @@ else
                                 );
                                 unset($sectionListParams);?>
                             <div class="filter">
-                                        <?
-                                        $intSectionID = $APPLICATION->IncludeComponent(
-                                                "bitrix:catalog.smart.filter",
-                                                "donna_smart_filtre",
-                                                array(
-                                                    "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-                                                    "IBLOCK_ID" => $arParams["IBLOCK_ID"],
-                                                    "SECTION_ID" => $arCurSection['ID'],
-                                                    "FILTER_NAME" => $arParams["FILTER_NAME"],
-                                                    "PRICE_CODE" => $arParams["~PRICE_CODE"],
-                                                    "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-                                                    "CACHE_TIME" => $arParams["CACHE_TIME"],
-                                                    "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-                                                    "SAVE_IN_SESSION" => "N",
-                                                    "FILTER_VIEW_MODE" => $arParams["FILTER_VIEW_MODE"],
-                                                    "XML_EXPORT" => "N",
-                                                    "SECTION_TITLE" => "NAME",
-                                                    "SECTION_DESCRIPTION" => "DESCRIPTION",
-                                                    'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
-                                                    "TEMPLATE_THEME" => $arParams["TEMPLATE_THEME"],
-                                                    'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
-                                                    'CURRENCY_ID' => $arParams['CURRENCY_ID'],
-                                                    "SEF_MODE" => $arParams["SEF_MODE"],
-                                                    "SEF_RULE" => "/catalog-donna/#SECTION_CODE#/filter/#SMART_FILTER_PATH#/apply/",
-                                                    "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
-                                                    "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-                                                    "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
-                                                ),
-                                                $component,
-                                                array('HIDE_ICONS' => 'Y')
-                                            );
-                                        ?>
-
+                                <?
+                                $intSectionID = $APPLICATION->IncludeComponent(
+                                    "bitrix:catalog.smart.filter",
+                                    "donna_smart_filtre",
+                                    array(
+                                        "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+                                        "IBLOCK_ID" => $arParams["IBLOCK_ID"],
+                                        "SECTION_ID" => $arCurSection['ID'],
+                                        "FILTER_NAME" => $arParams["FILTER_NAME"],
+                                        "PRICE_CODE" => $arParams["~PRICE_CODE"],
+                                        "CACHE_TYPE" => $arParams["CACHE_TYPE"],
+                                        "CACHE_TIME" => $arParams["CACHE_TIME"],
+                                        "CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
+                                        "SAVE_IN_SESSION" => "N",
+                                        "FILTER_VIEW_MODE" => $arParams["FILTER_VIEW_MODE"],
+                                        "XML_EXPORT" => "N",
+                                        "SECTION_TITLE" => "NAME",
+                                        "SECTION_DESCRIPTION" => "DESCRIPTION",
+                                        'HIDE_NOT_AVAILABLE' => $arParams["HIDE_NOT_AVAILABLE"],
+                                        "TEMPLATE_THEME" => $arParams["TEMPLATE_THEME"],
+                                        'CONVERT_CURRENCY' => $arParams['CONVERT_CURRENCY'],
+                                        'CURRENCY_ID' => $arParams['CURRENCY_ID'],
+                                        "SEF_MODE" => $arParams["SEF_MODE"],
+                                        "SEF_RULE" => "/catalog-donna/#SECTION_CODE#/f/#SMART_FILTER_PATH#/",
+                                        "SMART_FILTER_PATH" => $arResult["VARIABLES"]["SMART_FILTER_PATH"],
+                                        "PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
+                                        "INSTANT_RELOAD" => $arParams["INSTANT_RELOAD"],
+                                    ),
+                                    $component,
+                                    array('HIDE_ICONS' => 'Y')
+                                );
+                                ?>
                             </div>
                         </div>
                     </div>
                     <div class="catalog-content">
                         <div class="catalog-top">
-
                             <?$curPage = explode('/', $APPLICATION->GetCurPage());
                             $sectionName = "";
                             foreach ($curPage as $value)
@@ -123,8 +118,7 @@ else
                             false
                             );?>
                         </div>
-                    <?
-                        $intSectionID = $APPLICATION->IncludeComponent(
+                    <? $intSectionID = $APPLICATION->IncludeComponent(
                             "bitrix:catalog.section",
                             "",
                             array(
@@ -253,7 +247,6 @@ else
                             $component
                         );
                         ?>
-
 			        </div>
                 </div>
 		</div>
@@ -278,7 +271,6 @@ else
         </div>
     <? endif;?>
 </div>
-
 <? $APPLICATION->IncludeComponent(
     "bitrix:main.include",
     "",

@@ -75,8 +75,6 @@ $APPLICATION->SetTitle("Главная страница");
 	false
 );?>
 
-
-<!-- start container --><section id="container">
     <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list", 
 	"donna", 
@@ -192,6 +190,5 @@ $APPLICATION->SetTitle("Главная страница");
             "PATH" => SITE_DIR."include/donna/gallery.php"),
         false
     );?>
-</section>
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
 

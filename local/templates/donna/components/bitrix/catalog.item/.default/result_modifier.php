@@ -2,13 +2,10 @@
 if (!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die();
 
 $arResult["MORE_PHOTO"] = array();
-
-if(isset($arResult["ITEM"]["PROPERTIES"]["MORE_PHOTO"]["VALUE"]) && is_array($arResult["ITEM"]["PROPERTIES"]["MORE_PHOTO"]["VALUE"]))
-{
-    foreach($arResult["ITEM"]["PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $FILE)
-    {
+if (isset($arResult["ITEM"]["PROPERTIES"]["MORE_PHOTO"]["VALUE"]) && is_array($arResult["ITEM"]["PROPERTIES"]["MORE_PHOTO"]["VALUE"])) {
+    foreach ($arResult["ITEM"]["PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $FILE) {
         $FILE = CFile::GetFileArray($FILE);
-        if(is_array($FILE))
-            $arResult["MORE_PHOTO"][]=$FILE;
+        if (is_array($FILE))
+            $arResult["MORE_PHOTO"][] = $FILE;
     }
 }

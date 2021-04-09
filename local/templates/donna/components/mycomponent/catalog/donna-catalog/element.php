@@ -33,10 +33,7 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
 ?>
         <div class="sidebar-left">
             <div class="drop-wrap">
-
-                <?
-
-                $sectionListParams = array(
+                <?$sectionListParams = array(
                     "IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
                     "IBLOCK_ID" => $arParams["IBLOCK_ID"],
                     "CACHE_TYPE" => $arParams["CACHE_TYPE"],
@@ -58,7 +55,6 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
                         $sectionListParams["COUNT_ELEMENTS_FILTER"] = "CNT_AVAILABLE";
                     }
                 }
-
                 $APPLICATION->IncludeComponent(
                     "bitrix:catalog.section.list",
                     "",
@@ -67,12 +63,10 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
                     ($arParams["SHOW_TOP_ELEMENTS"] !== "N" ? array("HIDE_ICONS" => "Y") : array())
                 );
                 unset($sectionListParams);?>
-
             </div>
         </div>
         <div class="catalog-content">
             <div class="product">
-
 		    <?
             if ($arParams["USE_COMPARE"] === "Y")
             {
@@ -94,7 +88,6 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
                     array("HIDE_ICONS" => "Y")
                 );
             }
-
             $componentElementParams = array(
                 'IBLOCK_TYPE' => $arParams['IBLOCK_TYPE'],
                 'IBLOCK_ID' => $arParams['IBLOCK_ID'],
@@ -272,7 +265,6 @@ $isSidebar = ($arParams['SIDEBAR_DETAIL_SHOW'] == 'Y' && !empty($arParams['SIDEB
             ?>
         </div>
         </div>
-
 	<? if ($isSidebar): ?>
 		<div class='col-md-3 col-sm-4'>
 			<?

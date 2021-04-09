@@ -70,19 +70,21 @@ if (0 < $arResult["SECTIONS_COUNT"])
                         : $arSection["NAME"]
                     )
                 );
-            ?>
-                    <?if($arSection["CODE"] == "novinki"):?>
+                 if($arSection["CODE"] == "novinki"):?>
                         <a href="<? echo $arSection['SECTION_PAGE_URL']; ?>" class="image" style="background-image: url(<?echo $arSection['PICTURE']['SRC']; ?>);">
+                            <span class="image-title">
+                                <?=GetMessage("DRESSES");?>
+                              <span><?=GetMessage("CHOOSE_YOUR_LOOK");?></span>
+                            </span>
                                 </a>
                                 <?endif;?>
                             <?if($arSection["CODE"] == "sale"):?>
                         <a class="sale-home" href="<? echo $arSection['SECTION_PAGE_URL']; ?>" style="background-image: url(<?echo $arSection['PICTURE']['SRC']; ?>);"></a>
                     <?endif;?>
-                <?continue;}}?>
+                <?continue;
+            }
+        }?>
     </div>
-
-<?
-}
-?>
+<?}?>
 
 

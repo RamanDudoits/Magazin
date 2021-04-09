@@ -6,20 +6,17 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
  */
 
 global $APPLICATION;
-
 //delayed function must return a string
 if(empty($arResult))
 	return "";
 
 $strReturn = '';
-
 //we can't use $APPLICATION->SetAdditionalCSS() here because we are inside the buffered function GetNavChain()
 $css = $APPLICATION->GetCSSArray();
 if(!is_array($css) || !in_array("/bitrix/css/main/font-awesome.css", $css))
 {
 	$strReturn .= '<link href="'.CUtil::GetAdditionalFileURL("/bitrix/css/main/font-awesome.css").'" type="text/css" rel="stylesheet" />'."\n";
 }
-
 $strReturn .= '<section id="container">
                 <div class="inner"> 
                 <div class="breadcrumbs">';

@@ -158,8 +158,6 @@ $generalParams = array(
 $obName = 'ob'.preg_replace('/[^a-zA-Z0-9_]/', 'x', $this->GetEditAreaId($navParams['NavNum']));
 $containerName = 'container-'.$navParams['NavNum'];
 
-
-
 if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 {
     ?>
@@ -171,7 +169,6 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
 ?>
 
 <div class="catalog-section bx-<?=$arParams['TEMPLATE_THEME']?>" data-entity="<?=$containerName?>">
-
 
     <div class="sort">
         <div class="sort-left">
@@ -217,44 +214,38 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
         <!-- items-container -->
     <div class="catalog-list">
         <?
+        $countItem = 0;
         foreach ($arResult['ITEM_ROWS'] as $rowData)
         {
             $rowItems = array_splice($arResult['ITEMS'], 0, $rowData['COUNT']);
-            ?>
-                <?
                 switch ($rowData['VARIANT'])
                 {
                     case 3:
-                        ?>
-                                <?
-                                foreach ($rowItems as $item)
-                                {
-                                    ?>
-                                        <?
-                                        $APPLICATION->IncludeComponent(
-                                            'bitrix:catalog.item',
-                                            '.default',
-                                            array(
-                                                'RESULT' => array(
-                                                    'ITEM' => $item,
-                                                    'AREA_ID' => $areaIds[$item['ID']],
-                                                    'TYPE' => $rowData['TYPE'],
-                                                    'BIG_LABEL' => 'N',
-                                                    'BIG_DISCOUNT_PERCENT' => 'N',
-                                                    'BIG_BUTTONS' => 'N',
-                                                    'SCALABLE' => 'N'
-                                                ),
-                                                'PARAMS' => $generalParams
-                                                    + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
-                                            ),
-                                            $component,
-                                            array('HIDE_ICONS' => 'Y')
-                                        );
-                                }
-                                break;
+                        foreach ($rowItems as $item)
+                        {
+                            $countItem++;
+                            $APPLICATION->IncludeComponent(
+                                    'bitrix:catalog.item',
+                                    '.default',
+                                    array(
+                                        'RESULT' => array(
+                                            'ITEM' => $item,
+                                            'AREA_ID' => $areaIds[$item['ID']],
+                                            'TYPE' => $rowData['TYPE'],
+                                            'BIG_LABEL' => 'N',
+                                            'BIG_DISCOUNT_PERCENT' => 'N',
+                                            'BIG_BUTTONS' => 'N',
+                                            'SCALABLE' => 'N'
+                                        ),
+                                        'PARAMS' => $generalParams
+                                            + array('SKU_PROPS' => $arResult['SKU_PROPS'][$item['IBLOCK_ID']])
+                                    ),
+                                    $component,
+                                    array('HIDE_ICONS' => 'Y')
+                                );
+                        }
+                        break;
                 }
-                ?>
-            <?
         }
         unset($generalParams, $rowItems);
         ?>
@@ -262,20 +253,21 @@ if ($arParams['HIDE_SECTION_DESCRIPTION'] !== 'Y')
     </div>
 
         <div class="sort last">
+            <?if($countItem > 3):?>
             <div class="sort-left">
-                <a href="<?=$APPLICATION->GetCurPage();?>" class="down"><?=GetMessage("UP_BUTTON")?></a>
+                <a href="#" class="down"><?=GetMessage("UP_BUTTON")?></a>
             </div>
+            <?endif;?>
             <div class="sort-right">
-                <?if ($showBottomPager)
-                {?>
+                 <?if ($showBottomPager)
+                    {?>
                         <!-- pagination-container -->
                         <?=$arResult['NAV_STRING']?>
                         <!-- pagination-container -->
-                    </div>
-            <?}?>
+                    <?}?>
             </div>
         </div>
-
+</div>
     <?}
     else
     {

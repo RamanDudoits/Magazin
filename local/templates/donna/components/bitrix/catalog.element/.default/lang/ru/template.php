@@ -39,4 +39,5 @@ $MESS["SHARE_FRIENDS"] = "Рассказать друзьям:";
 $MESS["AMOUNT_PRODUCT"] = "Количество:";
 $MESS["PRODUCT_DESCRIPTION"] = "Описание товара:";
 $MESS["СHOOSE_COLOR"] = "Выберите цвет:";
+$MESS["СHOOSE_SIZES"] = "Определите свой размер";
 ?>

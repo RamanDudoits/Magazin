@@ -158,18 +158,16 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
 }
 ?>
 
-
-
     <div class="bx-catalog-element bx-<?=$arParams['TEMPLATE_THEME']?>" id="<?=$itemIds['ID']?>"
          itemscope itemtype="http://schema.org/Product">
         <div class="container-fluid">
+
             <div class="product-left">
                 <div class="big-image">
                     <a class="fancy" href="<?=$arResult['DETAIL_PICTURE']['SRC']?>">
                         <img src="<?=$arResult['DETAIL_PICTURE']['SRC']?>" alt="<?=$alt?>" >
                     </a>
                 </div>
-
                 <div class="share">
                     <div class="share-fr"><?=Loc::getMessage('SHARE_FRIENDS')?></div>
                     <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,moimir,gplus,twitter,lj" data-size="s"></div>
@@ -189,8 +187,6 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     <!--Price-->
                     <div class="product-left-inner">
                         <h1><?=$name?></h1>
-
-
                         <div class="price">
                             <?
                             if ($arParams['SHOW_OLD_PRICE'] === 'Y')
@@ -224,8 +220,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                 <div class="product-color">
                     <div class="haracther"><span><?=GetMessage("СHOOSE_COLOR")?></span></div>
                     <div class="images-color">
-                        <?
-                        foreach ($arResult["SNAP_ELEMENT"]["PIC"] as $key => $PHOTO)
+                        <?foreach ($arResult["SNAP_ELEMENT"]["PIC"] as $key => $PHOTO)
                         {
                             $file = CFile::ResizeImageGet($PHOTO, array('width'=>69, 'height'=>'105'), BX_RESIZE_IMAGE_EXACT, true);?>
                             <span><a class="" href="<?=$arResult["SNAP_ELEMENT"]["URL"][$key]?>" >
@@ -274,23 +269,21 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                                     </ul>
                                 </div>
                                 <?}?>
-                            <a href="#">Определите свой размер</a>
+                            <a href="#"><?=GetMessage("CHOOSE_SIZES")?></a>
                         </div>
 
+                        <div class="count">
+                            <div class="haracther"><span><?=GetMessage("AMOUNT_PRODUCT")?></span></div>
 
-                    <div class="count">
-                        <div class="haracther"><span><?=GetMessage("AMOUNT_PRODUCT")?></span></div>
-
-                        <div class="quantity">
-                            <div class="minus" >-</div>
-                            <input  id="<?=$itemIds['QUANTITY_ID']?>" type="text"
-                                   value="<?=$price['MIN_QUANTITY']?>" >
-                            <div class="plus">+</div>
-                        </div>
-                     </div>
+                            <div class="quantity">
+                                <div class="minus" >-</div>
+                                <input  id="<?=$itemIds['QUANTITY_ID']?>" type="text"
+                                       value="<?=$price['MIN_QUANTITY']?>" >
+                                <div class="plus">+</div>
+                            </div>
+                         </div>
                     </div>
-
-            </div>
+                 </div>
                 <div id="<?=$itemIds['BASKET_ACTIONS_ID']?>" style="display: <?=($actualItem['CAN_BUY'] ? '' : 'none')?>;">
                     <a class="add-bag <?=$buyButtonClassName?> product-item-detail-buy-button" id="<?=$itemIds['BUY_LINK']?>"
                        href="javascript:void(0);">
@@ -320,14 +313,10 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     <p><?=$arResult["PROPERTIES"]["PRODUCT_DESCRIPTION"]["DEFAULT_VALUE"]["TEXT"]?></p>
                 </div>
             </div>
-
-
-
-
                 <div class="product-item-detail-slider-container" id="<?=$itemIds['BIG_SLIDER_ID']?>">
-                        <div class="product-item-detail-slider-images-container" data-entity="images-container">
-                        </div>
+                    <div class="product-item-detail-slider-images-container" data-entity="images-container">
                     </div>
+                </div>
     </div>
 <?
 if ($haveOffers)

@@ -1,5 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-
+<!-- start container --><section id="container">
 <!-- start categories --> <section class="categories">
         <div class="inner">
 <?php
@@ -47,13 +47,12 @@ $arCurView = $arViewStyles[$arParams['VIEW_MODE']];
 $strSectionEdit = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_EDIT");
 $strSectionDelete = CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "SECTION_DELETE");
 $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_CONFIRM'));
+$countSection = 0;
 	switch ($arParams['VIEW_MODE'])
 	{
 		case 'TILE':
-
 			foreach ($arResult['SECTIONS'] as &$arSection)
 			{
-			    if ($arSection["CODE"] == "novinki" || $arSection["CODE"] == "sale") continue;
 				$this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
 				$this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 
@@ -83,12 +82,15 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
                     </a>
                 </div>
 				<?
+                $countSection++;
+                if ($countSection ==  5)
+                {
+                    break;
+                }
 			}?>
-
 			<?unset($arSection);
 			break;
-	}
-?>
+	}?>
         </div>
 </section>
 <!-- end of categories -->

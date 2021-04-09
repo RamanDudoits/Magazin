@@ -202,7 +202,7 @@ if (!empty($searchFilter) && is_array($searchFilter))
 
 	$APPLICATION->IncludeComponent(
 		"bitrix:catalog.section",
-		".default",
+		"",
 		$componentParams,
 		$arResult["THEME_COMPONENT"],
 		array('HIDE_ICONS' => 'Y')

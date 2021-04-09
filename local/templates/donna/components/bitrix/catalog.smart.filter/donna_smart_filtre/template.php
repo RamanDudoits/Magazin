@@ -488,13 +488,9 @@ $this->setFrameMode(true);
                                 <?
                                 }
                                 ?>
-
                         </div>
-
                     <?
-                }
-                ?>
-
+                }?>
 
             <?foreach($arResult["ITEMS"] as $key=>$arItem)//prices
             {
@@ -600,15 +596,14 @@ $this->setFrameMode(true);
                    type="submit"
                    id="set_filter"
                    name="set_filter"><?=GetMessage("CT_BCSF_SET_FILTER")?></a>
-                            <div class="bx-filter-popup-result <?if ($arParams["FILTER_VIEW_MODE"] == "VERTICAL") echo $arParams["POPUP_POSITION"]?>" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?> style="display: inline-block;">
-                                <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
-                                <span class="arrow"></span>
-                                <br/>
-                                <a href="<?echo $arResult["FILTER_URL"]?>" target=""><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
-                            </div>
+            <div class="bx-filter-popup-result <?if ($arParams["FILTER_VIEW_MODE"] == "VERTICAL") echo $arParams["POPUP_POSITION"]?>" id="modef" <?if(!isset($arResult["ELEMENT_COUNT"])) echo 'style="display:none"';?> style="display: inline-block;">
+                <?echo GetMessage("CT_BCSF_FILTER_COUNT", array("#ELEMENT_COUNT#" => '<span id="modef_num">'.intval($arResult["ELEMENT_COUNT"]).'</span>'));?>
+                <span class="arrow"></span>
+                <br/>
+                <a href="<?echo $arResult["FILTER_URL"]?>" target=""><?echo GetMessage("CT_BCSF_FILTER_SHOW")?></a>
+            </div>
             </div>
         </form>
-
 <script type="text/javascript">
     var smartFilter = new JCSmartFilter('<?echo CUtil::JSEscape($arResult["FORM_ACTION"])?>', '<?=CUtil::JSEscape($arParams["FILTER_VIEW_MODE"])?>', <?=CUtil::PhpToJSObject($arResult["JS_FILTER_PARAMS"])?>);
 </script>

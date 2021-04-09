@@ -1,3 +1,5 @@
 <?
 $MESS["CT_BCSL_ELEMENT_DELETE_CONFIRM"] = "Будет удалена вся информация, связанная с этой записью. Продолжить?";
+$MESS["DRESSES"] = "Платья";
+$MESS["CHOOSE_YOUR_LOOK"] = "Выберите ваш образ";
 ?>
