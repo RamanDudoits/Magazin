@@ -40,4 +40,5 @@ $MESS["AMOUNT_PRODUCT"] = "Количество:";
 $MESS["PRODUCT_DESCRIPTION"] = "Описание товара:";
 $MESS["СHOOSE_COLOR"] = "Выберите цвет:";
 $MESS["СHOOSE_SIZES"] = "Определите свой размер";
+$MESS["BUY_ONE_CLICK"] = "Купить в один клик";
 ?>

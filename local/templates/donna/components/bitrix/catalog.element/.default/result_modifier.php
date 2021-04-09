@@ -7,7 +7,7 @@
 
 //MORE PHOTO
 $arResult["MORE_PHOTO_ELEMENT"] = array();
-$arResult["SNAP_ELEMENT_ID"] = array();
+
     if(isset($arResult["PROPERTIES"]["MORE_PHOTO"]["VALUE"]) && is_array($arResult["PROPERTIES"]["MORE_PHOTO"]["VALUE"]))
     {
         foreach($arResult["PROPERTIES"]["MORE_PHOTO"]["VALUE"] as $FILE)
@@ -20,23 +20,18 @@ $arResult["SNAP_ELEMENT_ID"] = array();
     }
 
 //SNAP ELEMENT
-    if ($arResult["PROPERTIES"]["SNAP_BY_COLOR"]["VALUE"] != "")
+    if ($arResult["PROPERTIES"]["COLOR_ARTNUBER"]["VALUE"] >= 1)
     {
-        foreach ($arResult["PROPERTIES"]["SNAP_BY_COLOR"]["VALUE"] as $ID)
-        {
-            $arResult["SNAP_ELEMENT_ID"][] = $ID;
-        }
-
         $arSelect = array("DETAIL_PICTURE", "DETAIL_PAGE_URL", "CODE", "NAME");
-        $arFilter = array("ID" => $arResult["SNAP_ELEMENT_ID"],);
+        $arFilter = array("PROPERTY_COLOR_ARTNUBER" => $arResult["PROPERTIES"]["COLOR_ARTNUBER"]["VALUE"], "IBLOCK_ID" => $arParams["IBLOCK_ID"]);
         $res = CIBlockElement::GetList(array(), $arFilter, false, array(), $arSelect);
-        while ($ob = $res->GetNext())
-        {
-            $arResult["SNAP_ELEMENT"]["URL"][$ob["CODE"]] = $ob["DETAIL_PAGE_URL"];
-            $arResult["SNAP_ELEMENT"]["PIC"][$ob["CODE"]] = $ob["DETAIL_PICTURE"];
-            $arResult["SNAP_ELEMENT"]["NAME"][$ob["CODE"]] = $ob["NAME"];
+        while ($ob = $res->GetNext()) {
+            if ($ob["CODE"] != $arResult["CODE"]) {
+                $arResult["SNAP_ELEMENT"]["URL"][$ob["CODE"]] = $ob["DETAIL_PAGE_URL"];
+                $arResult["SNAP_ELEMENT"]["PIC"][$ob["CODE"]] = $ob["DETAIL_PICTURE"];
+                $arResult["SNAP_ELEMENT"]["NAME"][$ob["CODE"]] = $ob["NAME"];
+            }
         }
     }
-
 $component = $this->getComponent();
-$arParams = $component->applyTemplateModifications();?>
+$arParams = $component->applyTemplateModifications();

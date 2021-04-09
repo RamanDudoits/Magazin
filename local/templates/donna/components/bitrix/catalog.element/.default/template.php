@@ -182,19 +182,22 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                 );?>
             </div>
 
+
+
             <div class="product-right">
                 <div class="product-inner">
                     <!--Price-->
                     <div class="product-left-inner">
                         <h1><?=$name?></h1>
                         <div class="price">
-                            <?
-                            if ($arParams['SHOW_OLD_PRICE'] === 'Y')
-                            {?>
-                                <span class="price-old"> <?=($showDiscount ? $price['BASE_PRICE'] : '') . " " . $price["CURRENCY"]?></span>
-                            <?}?>
-                            <div id="<?=$itemIds['PRICE_ID']?>"></div>
-                            <span class="price-new"> <?=$price['RATIO_PRICE'] . " " . $price["CURRENCY"]?></span>
+                                <?
+                                if ($arParams['SHOW_OLD_PRICE'] === 'Y')
+                                {?>
+                                    <span class="price-old" id="<?=$itemIds['OLD_PRICE_ID']?>">  <?=($showDiscount ? $price['PRINT_RATIO_BASE_PRICE'] : '')?> </span>
+                                <?}?>
+
+                            <span class="price-new" id="<?=$itemIds['PRICE_ID']?>"> <?=$price['RATIO_PRICE'] . " " . $price["CURRENCY"]?></span>
+                            <div class="item_economy_price" id="<?=$itemIds['DISCOUNT_PRICE_ID']?>"></div>
                         </div>
                     </div>
                     <!--Close Price-->
@@ -291,7 +294,7 @@ if (!empty($arParams['LABEL_PROP_POSITION']))
                     </a>
                 </div>
 
-                <div class="buy-one-click-insert" id="buy-one-click-insert"></div>
+                <span class="add-click"><?=GetMessage("BUY_ONE_CLICK")?></span>
 
                 <div class="cusrousel-mini">
                         <?

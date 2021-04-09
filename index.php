@@ -94,7 +94,7 @@ $APPLICATION->SetTitle("Главная страница");
             0 => "",
             1 => "",
         ),
-        "SECTION_ID" => $_REQUEST["SECTION_ID"],
+        "SECTION_ID" => 0,
         "SECTION_URL" => "#SITE_DIR#/catalog-donna/#CODE#/",
         "SECTION_USER_FIELDS" => array(
             0 => "",
